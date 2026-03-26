@@ -1,0 +1,579 @@
+[
+  {
+    "nom": "Thon au naturel",
+    "prix": 1.60,
+    "unite": "boite",
+    "categorie": "Proteine",
+    "kcalPour100g": 116,
+    "macros": { "p": 25, "g": 0, "l": 1 },
+    "isVege": false
+  },
+  {
+    "nom": "Sardines en boîte (éco)",
+    "prix": 1.10,
+    "unite": "boite",
+    "categorie": "Proteine",
+    "kcalPour100g": 210,
+    "macros": { "p": 24, "g": 0, "l": 12 },
+    "isVege": false
+  },
+  {
+    "nom": "Maquereaux en boîte",
+    "prix": 1.40,
+    "unite": "boite",
+    "categorie": "Proteine",
+    "kcalPour100g": 240,
+    "macros": { "p": 14, "g": 0, "l": 20 },
+    "isVege": false
+  },
+  {
+    "nom": "Dés de jambon",
+    "prix": 8.50,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 115,
+    "macros": { "p": 20, "g": 1, "l": 3 },
+    "isVege": false
+  },
+  {
+    "nom": "Blanc de poulet (4 tranches)",
+    "prix": 2.20,
+    "unite": "paquet",
+    "categorie": "Proteine",
+    "kcalPour100g": 105,
+    "macros": { "p": 21, "g": 1, "l": 1.5 },
+    "isVege": false
+  },
+  {
+    "nom": "Blanc de poulet (8 tranches)",
+    "prix": 3.00,
+    "unite": "paquet",
+    "categorie": "Proteine",
+    "kcalPour100g": 105,
+    "macros": { "p": 21, "g": 1, "l": 1.5 },
+    "isVege": false
+  },
+  {
+    "nom": "Tofu fumé (prêt à manger)",
+    "prix": 8.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 165,
+    "macros": { "p": 15, "g": 3, "l": 10 },
+    "isVege": true
+  },
+  {
+    "nom": "Colin d'Alaska surgelé (éco)",
+    "prix": 5.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 75,
+    "macros": { "p": 16, "g": 0, "l": 1 },
+    "isVege": false
+  },
+  {
+    "nom": "Protéines de Soja Texturées (PST)",
+    "prix": 6.50,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 350,
+    "macros": { "p": 50, "g": 20, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": "Blanc de Poulet",
+    "prix": 10.50,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 110,
+    "macros": { "p": 24, "g": 0, "l": 1.5 },
+    "isVege": false
+  },
+  {
+    "nom": "Jambon de dinde (éco)",
+    "prix": 7.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 105,
+    "macros": { "p": 21, "g": 1, "l": 2 },
+    "isVege": false
+  },
+  {
+    "nom": "Oeufs",
+    "prix": 3.00,
+    "unite": "unite",
+    "categorie": "Proteine",
+    "kcalPour100g": 155,
+    "macros": { "p": 13, "g": 1, "l": 11 },
+    "isVege": true
+  },
+  {
+    "nom": "Steak haché 5%",
+    "prix": 14.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 125,
+    "macros": { "p": 21, "g": 0, "l": 5 },
+    "isVege": false
+  },
+  {
+    "nom": "Steak haché 15% (éco)",
+    "prix": 9.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 215,
+    "macros": { "p": 20, "g": 0, "l": 15 },
+    "isVege": false
+  },
+  {
+    "nom": "Tofu ferme",
+    "prix": 6.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 125,
+    "macros": { "p": 14, "g": 2, "l": 7 },
+    "isVege": true
+  },
+  {
+    "nom": "Saumon",
+    "prix": 20.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 205,
+    "macros": { "p": 20, "g": 0, "l": 13 },
+    "isVege": false
+  },
+  {
+    "nom": "Fromage blanc 0%",
+    "prix": 2.20,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 48,
+    "macros": { "p": 8, "g": 4, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Lait demi-écrémé",
+    "prix": 1.05,
+    "unite": "L",
+    "categorie": "Proteine",
+    "kcalPour100g": 46,
+    "macros": { "p": 3.3, "g": 4.8, "l": 1.6 },
+    "isVege": true
+  },
+  {
+    "nom": "Riz Basmati (sec)",
+    "prix": 2.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 350,
+    "macros": { "p": 8, "g": 77, "l": 1 },
+    "isVege": true
+  },
+  {
+    "nom": "Riz long grain (éco)",
+    "prix": 1.20,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 350,
+    "macros": { "p": 7, "g": 78, "l": 0.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Riz micro-ondable (sachet)",
+    "prix": 4.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 140,
+    "macros": { "p": 3, "g": 30, "l": 1 },
+    "isVege": true
+  },
+  {
+    "nom": "Pâtes (crues)",
+    "prix": 1.10,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 350,
+    "macros": { "p": 12, "g": 72, "l": 1.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Pâtes complètes (crues)",
+    "prix": 1.60,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 345,
+    "macros": { "p": 13, "g": 65, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": "Semoule (éco)",
+    "prix": 1.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 360,
+    "macros": { "p": 12, "g": 73, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": "Wraps / Tortillas",
+    "prix": 9.00,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 310,
+    "macros": { "p": 8, "g": 52, "l": 7 },
+    "isVege": true
+  },
+  {
+    "nom": "Lentilles corail (sèches)",
+    "prix": 3.00,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 360,
+    "macros": { "p": 25, "g": 55, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": "Lentilles préparées en boîte",
+    "prix": 3.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 90,
+    "macros": { "p": 6, "g": 12, "l": 0.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Pois chiches en boîte (égouttés)",
+    "prix": 2.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 130,
+    "macros": { "p": 7, "g": 16, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": " en boîte",
+    "prix": 3.00,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 80,
+    "macros": { "p": 3, "g": 15, "l": 1 },
+    "isVege": true
+  },
+  {
+    "nom": "Flocons d'avoine",
+    "prix": 1.80,
+    "unite": "500g",
+    "categorie": "Feculent",
+    "kcalPour100g": 370,
+    "macros": { "p": 13, "g": 60, "l": 7 },
+    "isVege": true
+  },
+  {
+    "nom": "Pain de mie complet (éco)",
+    "prix": 1.30,
+    "unite": "unite",
+    "categorie": "Feculent",
+    "kcalPour100g": 260,
+    "macros": { "p": 10, "g": 45, "l": 4 },
+    "isVege": true
+  },
+  {
+    "nom": "Patates",
+    "prix": 1.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 80,
+    "macros": { "p": 2, "g": 17, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Patate douce",
+    "prix": 2.80,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 86,
+    "macros": { "p": 1.6, "g": 20, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Quinoa (sec)",
+    "prix": 6.50,
+    "unite": "kg",
+    "categorie": "Feculent",
+    "kcalPour100g": 370,
+    "macros": { "p": 14, "g": 64, "l": 6 },
+    "isVege": true
+  },
+  {
+    "nom": "Brocolis surgelés (éco)",
+    "prix": 2.50,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 30,
+    "macros": { "p": 3, "g": 3, "l": 0.4 },
+    "isVege": true
+  },
+  {
+    "nom": "Épinards surgelés (éco)",
+    "prix": 1.80,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 23,
+    "macros": { "p": 3, "g": 2, "l": 0.4 },
+    "isVege": true
+  },
+  {
+    "nom": "Tomates pelées en boîte",
+    "prix": 1.50,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 25,
+    "macros": { "p": 1.2, "g": 4, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Haricots verts surgelés",
+    "prix": 2.00,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 31,
+    "macros": { "p": 1.8, "g": 4, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Haricots verts en boîte",
+    "prix": 3.00,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 20,
+    "macros": { "p": 1, "g": 3, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Petits pois carottes en boîte",
+    "prix": 3.25,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 50,
+    "macros": { "p": 3, "g": 8, "l": 0.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Ratatouille en boîte",
+    "prix": 5.00,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 45,
+    "macros": { "p": 1, "g": 5, "l": 2 },
+    "isVege": true
+  },
+  {
+    "nom": "Carottes",
+    "prix": 1.20,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 35,
+    "macros": { "p": 1, "g": 6, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Courgettes",
+    "prix": 2.50,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 17,
+    "macros": { "p": 1.2, "g": 3, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Poivrons surgelés",
+    "prix": 3.00,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 25,
+    "macros": { "p": 1, "g": 4, "l": 0.3 },
+    "isVege": true
+  },
+  {
+    "nom": "Mélange poêlée paysanne",
+    "prix": 2.80,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 60,
+    "macros": { "p": 2, "g": 8, "l": 1.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Bananes (éco)",
+    "prix": 1.50,
+    "unite": "kg",
+    "categorie": "Fruit",
+    "kcalPour100g": 90,
+    "macros": { "p": 1.1, "g": 20, "l": 0.3 },
+    "isVege": true
+  },
+  {
+    "nom": "Pommes (éco)",
+    "prix": 2.00,
+    "unite": "kg",
+    "categorie": "Fruit",
+    "kcalPour100g": 50,
+    "macros": { "p": 0.3, "g": 12, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Oranges",
+    "prix": 1.80,
+    "unite": "kg",
+    "categorie": "Fruit",
+    "kcalPour100g": 45,
+    "macros": { "p": 0.9, "g": 10, "l": 0.1 },
+    "isVege": true
+  },
+  {
+    "nom": "Kiwis",
+    "prix": 3.50,
+    "unite": "kg",
+    "categorie": "Fruit",
+    "kcalPour100g": 60,
+    "macros": { "p": 1.1, "g": 12, "l": 0.5 },
+    "isVege": true
+  },
+  {
+    "nom": "Fruits rouges surgelés",
+    "prix": 4.50,
+    "unite": "kg",
+    "categorie": "Fruit",
+    "kcalPour100g": 45,
+    "macros": { "p": 1, "g": 8, "l": 0.3 },
+    "isVege": true
+  },
+  {
+    "nom": "Huile d'olive",
+    "prix": 8.50,
+    "unite": "L",
+    "categorie": "Lipide",
+    "kcalPour100g": 900,
+    "macros": { "p": 0, "g": 0, "l": 100 },
+    "isVege": true
+  },
+  {
+    "nom": "Huile de colza (éco)",
+    "prix": 3.00,
+    "unite": "L",
+    "categorie": "Lipide",
+    "kcalPour100g": 900,
+    "macros": { "p": 0, "g": 0, "l": 100 },
+    "isVege": true
+  },
+  {
+    "nom": "Avocat",
+    "prix": 4.50,
+    "unite": "kg",
+    "categorie": "Lipide",
+    "kcalPour100g": 160,
+    "macros": { "p": 2, "g": 9, "l": 15 },
+    "isVege": true
+  },
+  {
+    "nom": "Amandes",
+    "prix": 2.50,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 630,
+    "macros": { "p": 25, "g": 7, "l": 53 },
+    "isVege": true
+  },
+  {
+    "nom": "Noix",
+    "prix": 16.00,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 690,
+    "macros": { "p": 15, "g": 7, "l": 67 },
+    "isVege": true
+  },
+    {
+    "nom": "Beurre de cacahuète",
+    "prix": 8.00,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 600,
+    "macros": { "p": 25, "g": 14, "l": 50 },
+    "isVege": true
+  },
+  {
+    "nom": "Skyr Nature",
+    "prix": 4.50,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 57,
+    "macros": { "p": 10, "g": 4, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Chocolat noir 85%",
+    "prix": 1.5,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 600,
+    "macros": { "p": 10, "g": 15, "l": 50 },
+    "isVege": true
+  },
+  {
+    "nom": "Compote sans sucre jouté (éco)",
+    "prix": 2.20,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 60,
+    "macros": { "p": 0.5, "g": 13, "l": 0.2 },
+    "isVege": true
+  },
+  {
+    "nom": "Galettes de riz",
+    "prix": 3.50,
+    "unite": "kg",
+    "categorie": "Snack",
+    "kcalPour100g": 380,
+    "macros": { "p": 8, "g": 80, "l": 3 },
+    "isVege": true
+  },
+ {
+    "nom": "Bacon (tranches)",
+    "prix": 2.50,
+    "unite": "paquet",
+    "categorie": "Proteine",
+    "kcalPour100g": 120,
+    "macros": { "p": 20, "g": 1, "l": 4 },
+    "isVege": false
+  },
+  {
+    "nom": "Fromage à tartiner (éco)",
+    "prix": 1.50,
+    "unite": "boite",
+    "categorie": "Lipide",
+    "kcalPour100g": 240,
+    "macros": { "p": 6, "g": 3, "l": 23 },
+    "isVege": true
+  },
+  {
+    "nom": "Gouda en tranches",
+    "prix": 2.00,
+    "unite": "paquet",
+    "categorie": "Proteine",
+    "kcalPour100g": 350,
+    "macros": { "p": 23, "g": 0, "l": 29 },
+    "isVege": true
+  },
+  {
+    "nom": "Haricots blancs tomate (Baked beans)",
+    "prix": 1.20,
+    "unite": "boite",
+    "categorie": "Feculent",
+    "kcalPour100g": 85,
+    "macros": { "p": 5, "g": 13, "l": 0.5 },
+    "isVege": true
+  }
+
+]

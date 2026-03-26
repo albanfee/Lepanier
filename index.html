@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Panier - Ton Plan</title>
+    <style>
+        /* Reset et style de base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {                
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #00e676;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #eeeeee;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: #2c2c2c;
+            border: 1px solid #3c3c3c;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input[type="number"]::placeholder {
+            color: #777;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: #00e676;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #2c2c2c;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .checkbox-label:hover {
+            background-color: #3c3c3c;
+        }
+
+        .btn-next {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background-color: #00e676;
+            color: #000000;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: #00c853;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-back {
+            background-color: transparent;
+            color: #a0a0a0;
+            border: 1px solid #3c3c3c;
+            width: 30%;
+        }
+
+        /* Style pour les macros */
+        .macros-box {
+            display: flex;
+            justify-content: space-between;
+            background: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .macro-item {
+            text-align: center;
+        }
+        .macro-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .macro-label {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+        .explication-macros {
+            font-size: 12px;
+            color: #a0a0a0;
+            background: #1a1a1a;
+            padding: 10px;
+            border-left: 3px solid #00e676;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+   .panier-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dashed #3c3c3c;
+    font-size: 13px;
+}
+.panier-qty {
+    color: #00e676;
+    font-weight: bold;
+}
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn-back {
+    background-color: #3c3c3c !important; /* Gris foncé pour le retour */
+    flex: 1;
+}
+.btn-next {
+    flex: 2; /* Le bouton Suivant est un peu plus large */
+}
+         /* --- Le Bouton de Sauvegarder Pro --- */
+button[onclick="sauvegarderPlan()"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espace entre l'icône et le texte */
+    background-color: #00e676; /* Vert Fluo existant */
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px; /* Coins très arrondis (style pilule) */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out; /* Transition douce pour l'effet hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Ombre légère pour le relief */
+}
+
+button[onclick="sauvegarderPlan()"]:hover {
+    background-color: #00c853; /* Vert un peu plus foncé au survol */
+    transform: translateY(-2px); /* Léger lift au survol */
+}
+
+button[onclick="sauvegarderPlan()"]:active {
+    transform: translateY(1px); /* Effet d'enfoncement quand on clique */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Style pendant le chargement (quand on désactive le bouton) */
+button[onclick="sauvegarderPlan()"]:disabled {
+    background-color: #616161; /* Gris */
+    color: #9e9e9e;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+.total-repas {
+  text-align: right;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #00ff88; /* Un vert néon discret pour rappeler ton thème */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 10px;
+  padding-top: 5px;
+}
+
+
+   </style>
+    
+            <script type="module">
+        // 1. Importations Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+
+        // 2. Ta config (Ne change rien ici)
+        const firebaseConfig = {
+          apiKey: "AizasyCQZGIKFb3gLLMqGSCvx2TQFo8KZ7N2uyw",
+          authDomain: "appli-nutrition.firebaseapp.com",
+          projectId: "appli-nutrition",
+          storageBucket: "appli-nutrition.firebasestorage.app",
+          messagingSenderId: "67500712321",
+          appId: "1:67500712321:web:202f6a955d794ecb770880",
+          measurementId: "G-8LCLC8P19X"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+// On prépare une boîte vide
+let catalogueAliments = []; 
+
+async function chargerCatalogue() {
+    try {
+        const reponse = await fetch('aliments.json');
+        const data = await reponse.json();
+        
+        // C'EST CETTE LIGNE QUI CHANGE TOUT :
+        window.catalogueAliments = data; 
+        
+        console.log("DINGUERIE : Catalogue chargé avec succès !", window.catalogueAliments);
+    } catch (erreur) {
+        console.error("Archi gênant, impossible de lire le JSON :", erreur);
+    }
+}
+
+// On lance le chargement direct quand la page s'ouvre
+chargerCatalogue();
+
+
+
+        // --- PARTAGE GLOBAL ---
+        window.catalogueAliments = catalogueAliments;
+        window.db = db;
+
+        // Fonction test
+        window.testerLaBDD = async function() {
+            try {
+                const querySnapshot = await getDocs(collection(db, "aliments"));
+                alert("Connexion Firebase OK !");
+            } catch (e) {
+                alert("Erreur : " + e.message);
+            }
+        };
+    </script>
+
+
+    </head>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+<div id="calendar-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #121212; z-index: 10000; overflow-y: auto; padding: 20px; font-family: sans-serif;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <h1 style="color: #2196f3; margin: 0;">🗓️ Mon Planning Hebdo</h1>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="display: flex; align-items: center; gap: 10px; background: #252525; padding: 8px 15px; border-radius: 50px; border: 1px solid #333;">
+                    <span style="color: #eee; font-size: 14px; font-weight: bold;">⚖️ Grammes</span>
+                    <label class="switch" style="position: relative; display: inline-block; width: 40px; height: 20px;">
+                        <input type="checkbox" id="toggle-grams" onchange="toggleGramDisplay()" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <button onclick="fermerCalendrier()" style="background: #ff5252; color: white; border: none; padding: 10px 20px; border-radius: 50px; font-weight: bold; cursor: pointer;">FERMER ✖️</button>
+            </div>
+        </div>
+        
+        <div id="calendar-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;"></div>
+    </div>
+</div>
+
+<style>
+/* Style de l'interrupteur iOS */
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #555; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #00e676; }
+input:checked + .slider:before { transform: translateX(20px); }
+</style>
+
+
+
+
+<body>
+
+    <div class="card">
+        
+        <div class="step active" id="step-sport">
+            <h2>Tu fais du sport ? 🏋️‍♂️</h2>
+            <p class="subtitle">Dis-nous tout, ça va définir tes macros.</p>
+            
+            <div class="nav-buttons" style="flex-direction: column; gap: 15px;">
+                <button class="btn-next" onclick="setSport(true)">Ouais, je m'entraîne !</button>
+                <button class="btn-next btn-back" style="width: 100%;" onclick="setSport(false)">Non, plutôt chill 🛋️</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-goal">
+            <h2>C'est quoi ton goal ? 🎯</h2>
+            <p class="subtitle">Choisis ton objectif physique actuel.</p>
+            
+            <div class="input-group">
+                <select id="objectif-sport">
+                    <option value="maintien">Me maintenir</option>
+                    <option value="pdm">Prendre du muscle (PDM)</option>
+                    <option value="perte">Perdre du gras</option>
+                    <option value="recomp">Sécher tout en se musclant (Recomp)</option>
+                </select>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn-next btn-back" onclick="nextStep('step-sport')">Retour</button>
+                <button class="btn-next" onclick="nextStep('step-physique')">Suivant</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-physique">
+            <h2>Tes stats physiques 💪</h2>
+            <p class="subtitle">On a besoin de tes infos pour calculer ton métabolisme.</p>
+            
+            <div class="input-group">
+                <label>Poids (kg)</label>
+                <input type="number" id="poids" placeholder="Ex: 70" required>
+            </div>
+
+            <div class="input-group">
+                <label>Taille (cm)</label>
+                <input type="number" id="taille" placeholder="Ex: 175" required>
+            </div>
+
+            <div class="input-group">
+                <label>Âge (ans)</label>
+                <input type="number" id="age" placeholder="Ex: 25" required>
+            </div>
+
+            <div class="input-group">
+                <label>Sexe</label>
+                <select id="sexe" required>
+                    <option value="homme">Homme</option>
+                    <option value="femme">Femme</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <label>Activité au quotidien (hors salle)</label>
+        <span onclick="toggleInfo()" style="cursor: pointer; color: #00e676; font-size: 18px; font-weight: bold;">ⓘ</span>
+    </div>
+    
+    <div id="info-bulle" style="display: none; background: #2c2c2c; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #3c3c3c; font-size: 12px; color: #a0a0a0; line-height: 1.5;">
+        <p>🏃‍♂️ <b>Sédentaire :</b> Travail de bureau, télétravail, tu bouges très peu (moins de 5000 pas/jour).</p><br>
+        <p>🚶‍♂️ <b>Légèrement actif :</b> Travail debout (vendeur, prof), tu marches un peu (5000-8000 pas/jour).</p><br>
+        <p>🏋️‍♂️ <b>Modérément actif :</b> Tu bouges pas mal, sport 3-5 fois/semaine, ou taf physique léger.</p><br>
+        <p>🔥 <b>Très actif :</b> Métier très physique (chantier, déménageur) ou gros entraînement tous les jours.</p>
+    </div>
+
+    <select id="activite" required>
+        <option value="1.2">Sédentaire (bureau, canapé)</option>
+        <option value="1.375">Légèrement actif (marche un peu)</option>
+        <option value="1.55">Modérément actif (taf debout)</option>
+        <option value="1.725">Très actif (taf physique)</option>
+    </select>
+</div>
+
+
+            <div class="nav-buttons">
+                <button class="btn-next btn-back" id="btn-retour-physique" onclick="nextStep('step-sport')">Retour</button>
+                <button id="calculer-btn" class="btn-next">Calculer mes macros</button>
+            </div>
+
+                        <div id="resultat" style="display: none; margin-top: 20px; text-align: center;">
+                <h3 style="color: #a0a0a0; font-size: 14px; margin-bottom: 5px;">Ton budget KCAL par jour :</h3>
+                <p id="tdee-valeur" style="color: #00e676; font-size: 28px; font-weight: bold; margin-bottom: 15px;"></p>
+                
+                <button onclick="document.getElementById('calculer-btn').click()" style="background: transparent; border: 1px solid #00e676; color: #00e676; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 15px; transition: 0.2s;">
+                    Recalculer 🔄
+                </button>
+
+                
+                <div class="macros-box">
+                    <div class="macro-item">
+                        <div class="macro-value" id="val-prot">0g</div>
+                        <div class="macro-label">Protéines</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-value" id="val-gluc">0g</div>
+                        <div class="macro-label">Glucides</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-value" id="val-lip">0g</div>
+                        <div class="macro-label">Lipides</div>
+                    </div>
+                </div>
+
+                <div class="explication-macros" id="texte-explication">
+                    </div>
+
+                <button class="btn-next" onclick="nextStep('step-budget')">Passer au budget ➔</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-budget">
+            <h2>Ton budget 💸</h2>
+            <p class="subtitle">On passe aux choses sérieuses : tes thunes.</p>
+            <div class="input-group">
+                <label>Budget hebdo (€)</label>
+                <input type="number" placeholder="Ex: 50">
+            </div>
+            <div class="input-group">
+                <label>Courses par semaine</label>
+                <select>
+                    <option>1 fois</option>
+                    <option>2 fois</option>
+                    <option>Plus de 2 fois</option>
+                </select>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-next btn-back" onclick="nextStep('step-physique')">Retour</button>
+                <button class="btn-next" onclick="nextStep('step-mood')">Suivant</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-mood">
+    <h2>Ton mood alimentaire 🥦</h2>
+    <p class="subtitle">Dis-nous s'il y a des trucs spéciaux.</p>
+    
+                <div class="input-group">
+                <select id="regime-alimentaire">
+                    <option value="classique">Mange de tout (aucune restriction) 🍔</option>
+                    <option value="vegetarien">Vegétarien 🌱</option>
+                    <option value="vegan">Végan 🥬</option>
+                    <option value="sans-porc">Sans porc 🚫🥓</option>
+                    <option value="sans-gluten">Sans gluten 🌾</option>
+                </select>
+            </div>
+
+    
+    <div class="nav-buttons">
+        <button class="btn-next btn-back" onclick="nextStep('step-budget')">Retour</button>
+        <button class="btn-next" onclick="nextStep('step-matos')">Suivant</button>
+    </div>
+</div>
+
+
+        <div class="step" id="step-matos">
+            <h2>Ton matos 🍳</h2>
+            <p class="subtitle">T'as quoi pour faire à manger ?</p>
+                        <div class="input-group">
+                <select id="moyen-cuisine">
+                    <option value="tout">J'ai des plaques de cuisson / un four 🍳</option>
+                    <option value="micro-onde">J'ai juste un micro-ondes ☢</option>
+                    <option value="aucun">Je n'ai rien pour cuire </option>
+                </select>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn-next btn-back" onclick="nextStep('step-mood')">Retour</button>
+                <button class="btn-next" onclick="nextStep('step-life')">Suivant</button>
+            </div>
+        </div>
+
+        <div class="step" id="step-life">
+            <h2>Life & Time ⏱️</h2>
+            <p class="subtitle">T'as combien de temps pour faire à graille ?</p>
+            <div class="input-group">
+                <label>Temps pour cuisiner (par repas)</label>
+                       <select id="temps-cuisine">
+            <option value="rapide">Rapide (moins de 15 min)</option>
+            <option value="normal">Tranquille (15 à 30 min)</option>
+            <option value="long">J'ai le time (plus de 30 min)</option>
+        </select>
+
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-next btn-back" onclick="nextStep('step-matos')">Retour</button>
+                <button class="btn-next" onclick="finishForm()">Créer mon panier</button>
+            </div>
+        </div>
+  
+  
+          <div class="step" id="step-resultat">
+            <h2>Ton Panier IA 🛒✨</h2>
+            <p class="subtitle">Calculé pour <span id="res-kcal" style="color: #00e676; font-weight: bold;"></span> et un budget de <span id="res-budget" style="color: #00e676; font-weight: bold;"></span>.</p>
+            <p id="disclaimer" style="font-size: 11px; color: #777; font-style: italic; margin-top: 10px; text-align: center; line-height: 1.4;">
+    * Les prix sont basés sur des moyennes de marques distributeurs (MDD). <br>
+    Ils peuvent varier selon l'enseigne, la saison et la région.
+</p>
+
+            
+            <div id="zone-panier" style="margin-bottom: 20px;">
+                </div>
+            
+            <div class="nav-buttons" style="flex-direction: column; gap: 15px;">
+               <button onclick="sauvegarderPlan()" style="width: 100%; background: #00e676; /* ... tes styles ... */">
+    Sauvegarder mon plan 💾
+</button>
+
+<button onclick="genererSemaine()" style="width: 100%; background: #2196f3; color: white; padding: 15px; border: none; border-radius: 12px; font-weight: bold; font-size: 16px; margin-top: 10px; cursor: pointer;">
+    Voir l'idée de programme sur la semaine 📅
+</button>
+
+                            <button class="btn-next" id="btn-menu" style="background: #ff9800; color: #fff; margin-bottom: 15px; width: 100%;" onclick="genererMenu()">Voir ma journée type 🍽️</button>
+                            <button class="btn-next btn-back" style="width: 100%; background: #3c3c3c; border: 1px solid #555;" onclick="nextStep('step-budget')">
+                              ✏️ Modifier le budget ou le régime
+                           </button>
+            
+            <div id="zone-menu" style="display: none; margin-bottom: 20px;">
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+    <button onclick="window.location.reload()" 
+            style="display: inline-block; width: 100%; max-width: 300px; padding: 15px 30px; background-color: #2196F3; color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+        Recommencer du début 🔄
+    </button>
+    <br>
+    <small style="color: #bbb; display: block; margin-top: 10px;">(Clique ici pour vider les calories et recommencer)</small>
+</div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+            <script>
+              
+              // --- LA LISTE NOIRE DES ALIMENTS BANNIS ---
+window.alimentsBannisUser = [];
+
+// --- LA FONCTION MAGIQUE DU BOUTON ❌ ---
+window.bannirAliment = function(nom) {
+    console.log("Aliment banni : " + nom);
+    window.alimentsBannisUser.push(nom); // On le met sur liste noire
+    finishForm(); // On relance l'IA instantanément, ni vu ni connu !
+};
+
+              
+        // LE CERVEAU DE L'APP 🧠 (Ici on va tout stocker)
+        let profilPanier = {
+            sportif: false,
+            objectif: "Aucun",
+            tdee: 0,
+            macros: { prot: 0, lip: 0, gluc: 0 },
+            budgetHebdo: 0,
+            coursesParSemaine: "",
+            regimes: [],
+            matos: [],
+            tempsCuisine: ""
+        };
+
+        // --- NOUVEAU : GESTION DU "MANGE DE TOUT" ---
+        window.toggleOmnivore = function(source) {
+            // On cible toutes les cases sauf "Mange de tout"
+            const autresCases = document.querySelectorAll('#step-mood input[type="checkbox"]:not(#check-omnivore)');
+            if (source.checked) {
+                // Si on coche "Mange de tout", on décoche le reste
+                autresCases.forEach(check => check.checked = false);
+            }
+        };
+
+        // Si on coche un truc spécifique (ex: Végan), on décoche "Mange de tout" automatiquement
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('#step-mood input[type="checkbox"]:not(#check-omnivore)')) {
+                if (e.target.checked) {
+                    const omnivoreCheck = document.getElementById('check-omnivore');
+                    if (omnivoreCheck) omnivoreCheck.checked = false;
+                }
+            }
+        });
+        // --------------------------------------------
+
+        // Fonction pour naviguer entre les écrans
+        function nextStep(stepId) {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => step.classList.remove('active'));
+            document.getElementById(stepId).classList.add('active');
+        }
+
+        // Choix du sport
+        function setSport(valeur) {
+            profilPanier.sportif = valeur;
+            const btnRetour = document.getElementById('btn-retour-physique');
+            
+            if (valeur) {
+                btnRetour.setAttribute('onclick', "nextStep('step-goal')");
+                nextStep('step-goal');
+            } else {
+                btnRetour.setAttribute('onclick', "nextStep('step-sport')");
+                nextStep('step-physique');
+            }
+        }
+       function toggleInfo() {
+            const info = document.getElementById('info-bulle');
+           
+            if (info.style.display === 'none') {
+            info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+       } 
+
+        // Calcul des calories et des macros
+        document.getElementById('calculer-btn').addEventListener('click', function() {
+            const poids = parseFloat(document.getElementById('poids').value);
+            const taille = parseFloat(document.getElementById('taille').value);
+            const age = parseInt(document.getElementById('age').value);
+            const sexe = document.getElementById('sexe').value;
+            const activiteFactor = parseFloat(document.getElementById('activite').value);
+
+            if (isNaN(poids) || isNaN(taille) || isNaN(age)) {
+                alert("Wesh, remplis tous les champs correctement stp !");
+                return;
+            }
+
+            let bmr = (sexe === "homme") 
+                ? (10 * poids) + (6.25 * taille) - (5 * age) + 5 
+                : (10 * poids) + (6.25 * taille) - (5 * age) - 161;
+
+            let tdee = bmr * activiteFactor;
+            let prot, lip, gluc;
+            let explication = "";
+
+            if (profilPanier.sportif) {
+                const goal = document.getElementById('objectif-sport').value;
+                profilPanier.objectif = goal; // Sauvegarde de l'objectif
+                
+                if (goal === 'pdm') tdee += 300;
+                if (goal === 'perte') tdee -= 300;
+                if (goal === 'recomp') tdee -= 150;
+
+                prot = poids * 2.2; 
+                lip = poids * 1; 
+                explication = "💡 <b>Pourquoi tes macros sont modifiées ?</b><br>Comme tu pousses à la salle, tu as besoin de plus de protéines (environ 2g/kg) pour reconstruire le muscle, et on a ajusté tes calories selon ton objectif.";
+            } else {
+                prot = poids * 1.2;
+                lip = poids * 1;
+                explication = "💡 <b>Tes macros de base :</b><br>Vu que tu ne t'entraînes pas spécifiquement, tes macros sont calculées sur un profil classique pour être en forme au quotidien, sans forcer sur les prots !";
+            }
+
+            gluc = (tdee - (prot * 4) - (lip * 9)) / 4;
+            if (gluc < 0) gluc = 0;
+
+            // SAUVEGARDE DANS LE CERVEAU 🧠
+            profilPanier.tdee = Math.round(tdee);
+            profilPanier.macros.prot = Math.round(prot);
+            profilPanier.macros.lip = Math.round(lip);
+            profilPanier.macros.gluc = Math.round(gluc);
+
+            // Affichage
+            document.getElementById('tdee-valeur').innerText = profilPanier.tdee + " kcal";
+            document.getElementById('val-prot').innerText = profilPanier.macros.prot + "g";
+            document.getElementById('val-lip').innerText = profilPanier.macros.lip + "g";
+            document.getElementById('val-gluc').innerText = profilPanier.macros.gluc + "g";
+            document.getElementById('texte-explication').innerHTML = explication;
+            
+            document.getElementById('calculer-btn').style.display = 'none';
+            document.getElementById('btn-retour-physique').style.display = 'none';
+            document.getElementById('resultat').style.display = 'block';
+        });
+
+        // LE BOUTON FINAL : On aspire TOUTES les données restantes
+                
+                
+
+                
+         function genererMenu() {
+    // 1. On récupère les noms EXACTS du panier (ex: "Steak haché", "Riz Basmati")
+    const elementsSpans = document.querySelectorAll('.panier-item span:first-child');
+    const itemsPanier = Array.from(elementsSpans).map(el => el.innerText.split('(')[0].trim());
+
+    if (itemsPanier.length === 0) {
+        alert("Wesh, ton panier est vide, retourne faire tes courses !");
+        return;
+    }
+
+    // 2. Le gros radar à mots-clés (tout en minuscules pour comparer sans erreur)
+    const motsProts = ["poulet", "thon", "steak", "lardon", "oeuf", "dinde", "boeuf", "porc", "saucisse", "jambon", "poisson", "saumon", "hach"];
+    const motsFecs = ["riz", "pate", "pâte", "patate", "flocon", "pain", "lentille", "semoule", "quinoa", "blé"];
+    const motsLegs = ["tomate", "carotte", "oignon", "haricot", "courgette", "brocoli", "poireau", "salade"];
+    const motsFruits = ["banane", "pomme", "poire"];
+
+    
+
+    // 3. On fouille le panier
+    let maProtExacte = itemsPanier.find(item => motsProts.some(mot => item.toLowerCase().includes(mot)));
+    let monFeculentExact = itemsPanier.find(item => motsFecs.some(mot => item.toLowerCase().includes(mot)));
+    let monLegumeExact = itemsPanier.find(item => motsLegs.some(mot => item.toLowerCase().includes(mot)));
+    let monFruitExact = itemsPanier.find(item => motsFruits.some(mot => item.toLowerCase().includes(mot)));
+
+
+    // 4. Gestion de crise (Si on n'a vraiment pas de viande)
+    let protFinale = maProtExacte;
+    if (!protFinale) {
+        if (monFeculentExact && monFeculentExact.toLowerCase().includes("lentille")) {
+            protFinale = "Lentilles (Protéines végétales)"; // Les lentilles sauvent le game
+        } else {
+            protFinale = "Pas de protéines (Budget serré !)"; // On assume de pas en avoir
+        }
+    }
+
+    let fecFinale = monFeculentExact || "Pas de féculents";
+    let legFinale = monLegumeExact || "Pas de légumes";
+    let fruitFinal = monFruitExact || "Pas de fruits";
+
+    // 5. Calculs des macros
+    let protMidi = Math.round((profilPanier.macros.prot * 0.40) * 4.5); 
+    let glucMidi = Math.round((profilPanier.macros.gluc * 0.40) * 1.3);
+    let protSoir = Math.round((profilPanier.macros.prot * 0.35) * 4.5);
+    let glucSoir = Math.round((profilPanier.macros.gluc * 0.35) * 1.3);
+
+    // 6. Formatage des textes pour le menu
+    let texteProtMidi = protFinale;
+    let texteProtSoir = protFinale;
+
+    if (maProtExacte) { // Si la viande/oeuf existe bien
+        if (maProtExacte.toLowerCase().includes("oeuf")) {
+            texteProtMidi = `3 ou 4 ${maProtExacte}`;
+            texteProtSoir = `3 ${maProtExacte}`;
+        } else {
+            texteProtMidi = `${protMidi}g de ${maProtExacte}`;
+            texteProtSoir = `${protSoir}g de ${maProtExacte}`;
+        }
+    }
+
+    let texteFecMidi = monFeculentExact ? `${glucMidi}g de ${fecFinale}` : fecFinale;
+    let texteFecSoir = monFeculentExact ? `${glucSoir}g de ${fecFinale}` : fecFinale;
+
+    // 7. Petit-déjeuner intelligent
+    let petitDej = "Petit-déj improvisé selon le reste du placard.";
+    if (itemsPanier.some(i => i.toLowerCase().includes("flocon"))) {
+        petitDej = "Bol de porridge (Flocons d'avoine + eau/lait).";
+    } else if (itemsPanier.some(i => i.toLowerCase().includes("pain"))) {
+        petitDej = "Tartines de pain complet.";
+    }
+
+    // 8. Affichage
+    let htmlMenu = `
+        <h3 style="color: #ff9800; text-align: center; margin-bottom: 15px;">Ton Menu Exclusif 🛒</h3>
+        
+        <div style="background: #2c2c2c; padding: 15px; border-radius: 12px; border-left: 5px solid #ff9800; margin-bottom: 12px;">
+            <p style="color: #fff; font-weight: bold; margin-bottom: 5px;">🌅 Matin (~${Math.round(profilPanier.tdee * 0.25)} kcal)</p>
+            <p style="font-size: 13px; color: #a0a0a0;">${petitDej}</p>
+        </div>
+
+        <div style="background: #2c2c2c; padding: 15px; border-radius: 12px; border-left: 5px solid #ff9800; margin-bottom: 12px;">
+            <p style="color: #fff; font-weight: bold; margin-bottom: 5px;">☀️ Midi (~${Math.round(profilPanier.tdee * 0.40)} kcal)</p>
+            <p style="font-size: 14px; color: #eee;">
+                - <b style="color:#00e676;">${texteProtMidi}</b> <br>
+                - <b style="color:#00e676;">${texteFecMidi}</b> <br>
+                - Accompagné de ${legFinale}.
+            </p>
+        </div>
+
+        <div style="background: #2c2c2c; padding: 15px; border-radius: 12px; border-left: 5px solid #ff9800;">
+            <p style="color: #fff; font-weight: bold; margin-bottom: 5px;">🌙 Soir (~${Math.round(profilPanier.tdee * 0.35)} kcal)</p>
+            <p style="font-size: 14px; color: #eee;">
+                - <b style="color:#00e676;">${texteProtSoir}</b> <br>
+                - <b style="color:#00e676;">${texteFecSoir}</b> <br>
+                - Mix de ${legFinale} pour les fibres.
+            </p>
+        </div>
+    `;
+    
+
+    document.getElementById('zone-menu').innerHTML = htmlMenu;
+    document.getElementById('zone-menu').style.display = 'block';
+}
+// Configuration temporaire (On mettra tes vraies clés secrètes après)
+           // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCQZGIKFb3gLLMqGSCvx2TQFo8KZ7N2uyw",
+  authDomain: "appli-nutrition.firebaseapp.com",
+  projectId: "appli-nutrition",
+  storageBucket: "appli-nutrition.firebasestorage.app",
+  messagingSenderId: "67500712321",
+  appId: "1:67500712321:web:202f6a955d794ecb770880",
+  measurementId: "G-8LCLC8P19X"
+};
+
+// On initialise la machine Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// La fonction Masterclass pour sauvegarder
+function sauvegarderPlan() {
+    const btnSave = document.querySelector('button[onclick="sauvegarderPlan()"]');
+    
+    // 1. État de chargement IMMÉDIAT (Stylé grâce au CSS :disabled)
+    if(btnSave) {
+        btnSave.disabled = true; // On bloque le bouton pour éviter le spam
+        btnSave.innerHTML = "⏳ Connexion Cloud..."; // On change le texte proprement
+    }
+
+    // Check de sécurité impératif si les clés sont encore manquantes
+    if (!firebaseConfig.apiKey || firebaseConfig.apiKey === "TES_CLES_ARRIVENT_BIENTOT") {
+        alert("⚠️ Hop hop hop ! Tu n'as pas encore mis tes vraies clés Firebase dans la config. Ça ne peut pas marcher.");
+        if(btnSave) resetBtnSave(btnSave); // On remet le bouton à zéro
+        return;
+    }
+
+    // Préparation des données (on garde la logique PNNS)
+    const monPlanData = {
+        budget: profilPanier.budgetHebdo,
+        calories: profilPanier.tdee,
+        regimes: profilPanier.regimes,
+        date: new Date().toLocaleDateString('fr-FR'),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp() // Date système pour trier plus tard
+    };
+
+    // 2. TENTATIVE D'ENVOI
+    // Si tu n'as pas activé Firestore en "Mode Test" ou si tes clés sont mauvaises, 
+    // ça va aller direct dans le .catch() après un court timeout.
+    db.collection("Plans").add(monPlanData)
+    .then((docRef) => {
+        // SUCCÈS : C'est carré !
+        console.log("🔥 Plan sauvegardé ID : ", docRef.id);
+        if(btnSave) {
+            btnSave.style.background = "#4caf50"; // On force un vert de succès
+            btnSave.innerHTML = "✅ Plan Enregistré !";
+        }
+        alert("C'est enregistré dans ton Cloud Google ! Ton app a une mémoire maintenant. ☁️🔥");
+    })
+    .catch((error) => {
+        // ERREUR : Le Cloud a rejeté la demande (mauvaises clés, Firestore pas activé...)
+        console.error("Erreur Firebase :", error);
+        alert("Aïe, impossible de sauvegarder...\n\nErreur potentielle : Vérifie que tu as bien activé 'Firestore Database' dans ta console Firebase !");
+        if(btnSave) resetBtnSave(btnSave); // On remet le bouton à zéro
+    });
+}
+
+// Petite fonction utilitaire pour remettre le bouton à son état initial
+function resetBtnSave(btn) {
+    btn.disabled = false; // On le débloque
+    btn.style.opacity = "1";
+    btn.style.background = ""; // On enlève le style forcé pour remettre celui du CSS
+    btn.innerHTML = "Sauvegarder mon plan 💾"; // Texte initial
+}
+
+// --- LA MÉMOIRE DU BOT (Ultra important) ---
+let memoireSemaine = [];
+let memoireCourses = {};
+
+// --- LE SCANNER DE PRIX SECRET DE L'IA ---
+function estimerPrixCourses(courses) {
+    let total = 0;
+    const cleanNom = (nom) => nom ? nom.replace(/ x\d+/g, '').trim() : "Inconnu";
+    Object.entries(courses).forEach(([nom, qty]) => {
+        const info = window.catalogueAliments.find(a => cleanNom(a.nom) === nom || a.nom === nom);
+        if(!info) return;
+        let prix = 0;
+
+                if (nom.toLowerCase().includes("oeuf")) {
+            let nbOeufs = Math.round(qty / 50); // 1 oeuf = 50g
+            let boites12 = Math.floor(nbOeufs / 12);
+            let reste = nbOeufs % 12;
+            let boites6 = 0;
+            
+            if (reste > 0) {
+                if (reste <= 6) {
+                    boites6 = 1;
+                } else {
+                    boites12 += 1; 
+                }
+            }
+            prix = (boites12 * 2.90) + (boites6 * 1.60);
+
+        } else if (info.unite === "L") {
+            let nbLitres = Math.ceil(qty / 1000); 
+            if(nbLitres < 1) nbLitres = 1;
+            prix = nbLitres * info.prix;
+        } else if (info.unite === "boite" || info.unite === "unite") {
+            let tailleUnite = 150;
+            if (nom.toLowerCase().includes("pain")) tailleUnite = 500;
+            if (nom.toLowerCase().includes("jambon")) tailleUnite = 120;
+            let nbUnites = Math.ceil(qty / tailleUnite);
+            prix = nbUnites * info.prix;
+        } else if (info.categorie === "Snack" || info.nom.includes("Huile")) {
+            let taillePot = 350; 
+            if (nom.toLowerCase().includes("chocolat")) taillePot = 100;
+            if (nom.toLowerCase().includes("skyr")) taillePot = 450;
+            if (nom.toLowerCase().includes("compote")) taillePot = 500;
+            let nbPots = Math.ceil(qty / taillePot);
+            if(nbPots < 1) nbPots = 1;
+            prix = nbPots * info.prix;
+        } else if ((info.categorie === "Fruit" || info.categorie === "Legume") && !nom.toLowerCase().includes("surgelé") && !nom.toLowerCase().includes("boîte") && !nom.toLowerCase().includes("poêlée")) {
+            prix = (qty / 1000) * info.prix;
+        } else {
+            let nbPaquets = Math.ceil(qty / 500); 
+            prix = (nbPaquets * 500 / 1000) * info.prix;
+        }
+        total += prix;
+    });
+    return total;
+}
+
+// --- FONCTION 1 : CRÉATION DU VRAI PANIER (100 ROUNDS MACROS) ---
+function finishForm() {
+    const catalogueBase = window.catalogueAliments;
+    
+    if (!catalogueBase || catalogueBase.length === 0) {
+        alert("Wesh, ton catalogue est vide ! L'app peut pas bosser.");
+        return;
+    }
+
+    profilPanier.budgetHebdo = parseFloat(document.querySelector('#step-budget input[type="number"]').value) || 0;
+    const objectifKcal = profilPanier.tdee || 2000;
+    if (profilPanier.budgetHebdo <= 0) { alert("Mets un vrai budget stp !"); return; }
+
+    const budgetQuotidien = profilPanier.budgetHebdo / 7;
+
+       // --- LE CERVEAU ANTI-FAILLITE & LE VIDEUR ---
+    let catalogueAliments = [...catalogueBase];
+    
+        if (budgetQuotidien < 6) {
+        // MODE GALÈRE : On recale le luxe ET la bouffe de flemmard qui coûte cher
+        const luxeBannis = ["Steak haché 5%", "Riz Basmati", "Huile d'olive", "Saumon", "Avocat", "Quinoa", "Amandes", "Noix", "Ratatouille", "Poivrons", "Kiwis", "micro-ondable", "sachet", "fumé", "préparé"];
+        // Le toLowerCase() permet de ne rater aucun aliment, même s'il y a des majuscules
+        catalogueAliments = catalogueAliments.filter(a => !luxeBannis.some(luxe => a.nom.toLowerCase().includes(luxe.toLowerCase())));
+    } 
+
+
+    if (window.alimentsBannisUser && window.alimentsBannisUser.length > 0) {
+        catalogueAliments = catalogueAliments.filter(a => !window.alimentsBannisUser.includes(a.nom));
+    }
+
+
+    // --- LE VIDEUR TEMPS & MATÉRIEL ---
+    // (À placer juste après tes filtres de budget et d'aliments bannis)
+
+    // On imagine que tu récupères les choix du mec depuis ton HTML
+    const tempsUser = document.getElementById('temps-cuisine').value; // ex: "rapide", "normal"
+    const matosUser = document.getElementById('moyen-cuisine').value; // ex: "micro-onde", "plaques", "tout"
+
+    // 1. Filtre Matériel
+    if (matosUser === "micro-onde" || matosUser === "aucun") {
+        // Le mec ne peut pas faire griller ou bouillir : on vire le cru à cuire
+        const bannisCuisson = ["Steak haché", "Blanc de Poulet", "Pâtes (crues)", "Riz", "Lentilles", "Oeufs", "Courgettes", "Pâtes complètes (crues)", "Patates"]; 
+        catalogueAliments = catalogueAliments.filter(a => !bannisCuisson.some(b => a.nom.includes(b)));
+    }
+
+    // 2. Filtre Temps
+    if (tempsUser === "rapide") {
+        // Le mec est pressé : on vire ce qui prend plus de 15 min de prépa/cuisson
+        const bannisLongs = ["Pommes de terre", "Lentilles corail (sèches)", "Brocolis surgelés"];
+        catalogueAliments = catalogueAliments.filter(a => !bannisLongs.some(b => a.nom.includes(b)));
+    }
+    // --- LE VIDEUR VÉGÉTARIEN ---
+    // On sécurise la récup au cas où l'ID n'est pas le bon, pour éviter l'erreur "null"
+    const elementRegime = document.getElementById('regime-alimentaire'); 
+    const regimeUser = elementRegime ? elementRegime.value : "classique";
+
+    if (regimeUser === "végetarien") {
+        // On garde QUE la bouffe avec la carte VIP isVege: true
+        catalogueAliments = catalogueAliments.filter(a => a.isVege === true);
+    }
+
+
+          function piocherSmart(cat, exclus = []) {
+        let options = catalogueAliments.filter(a => a.categorie === cat && !exclus.some(ex => a.nom.includes(ex)));
+        
+        if (options.length === 0) options = catalogueAliments.filter(a => a.categorie === cat);
+
+        if (budgetQuotidien < 6) {
+            // Trie du moins cher au plus cher
+            options.sort((a, b) => a.prix - b.prix);
+            // On oblige l'IA à piocher UNIQUEMENT dans les 3 trucs les moins chers !
+            let maxIndex = Math.min(3, options.length);
+            return options[Math.floor(Math.random() * maxIndex)];
+        } 
+        else if (budgetQuotidien > 10) {
+            // Trie du plus cher au moins cher pour les riches
+            options.sort((a, b) => b.prix - a.prix);
+            let maxIndex = Math.min(5, options.length);
+            return options[Math.floor(Math.random() * maxIndex)];
+        }
+        
+        // Mode normal
+        return options[Math.floor(Math.random() * options.length)];
+    }
+
+
+    function safePick(pool, label = "un aliment") {
+        if (!pool || pool.length === 0) return catalogueAliments[0]; 
+        return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    const cleanNom = (nom) => nom ? nom.replace(/ x\d+/g, '').trim() : "Inconnu";
+    const infoLait = catalogueAliments.find(a => a.nom.toLowerCase().includes("lait"));
+    const nomLait = infoLait ? infoLait.nom : "Lait";
+
+    // --- 🔄 LA BATAILLE DES 100 PANIERS (LE MEILLEUR EN MACROS GAGNE) 🔄 ---
+    let tentatives = 0;
+    let meilleurPanierGlobal = null;
+    let scoreMeilleurPanier = Infinity; // Plus le score est proche de 0, mieux c'est
+
+        while (tentatives < 10000) {
+        let poolProteines = [], poolFeculents = [], poolLegumes = [];
+        
+        // --- 1. SÉLECTION SÉCURISÉE DES ALIMENTS ---
+        const poissons = catalogueAliments.filter(a => ["Saumon", "Sardines", "Thon", "Colin"].some(p => a.nom.includes(p)));
+        if (poissons.length > 0) poolProteines.push(safePick(poissons));
+        const volailles = catalogueAliments.filter(a => ["Poulet", "Dinde", "Oeufs"].some(v => a.nom.includes(v)));
+        if (volailles.length > 0) poolProteines.push(safePick(volailles));
+        
+        while(poolProteines.length < 3) {
+            let exclusProt = [nomLait, "Fromage blanc", "Skyr", "Gouda", "Emmental", "Fromage", ...poolProteines.map(p => p.nom)];
+            poolProteines.push(piocherSmart("Proteine", exclusProt));
+        }
+
+        // 🛑 L'ARME SECRÈTE GLUCIDES : On OBLIGE le bot à prendre au moins un Féculent DENSE (Riz, Pâtes, Semoule)
+        const feculentsSecs = catalogueAliments.filter(a => a.categorie === "Feculent" && a.macros && a.macros.g >= 60);
+        if (feculentsSecs.length > 0) poolFeculents.push(safePick(feculentsSecs));
+
+        const legumineuses = catalogueAliments.filter(a => ["Lentilles", "Pois chiches", "Haricots rouges"].some(l => a.nom.includes(l)));
+        if (legumineuses.length > 0) poolFeculents.push(safePick(legumineuses));
+
+        while(poolFeculents.length < 3) {
+            let exclusFec = ["Flocons d'avoine", "Pain", "Biscotte", "Muffin", "Haricots blancs", ...poolFeculents.map(f => f.nom)];
+            if (poolFeculents.some(f => f.nom.includes("Pâtes"))) exclusFec.push("Pâtes");
+            poolFeculents.push(piocherSmart("Feculent", exclusFec));
+        }
+
+        while(poolLegumes.length < 3) poolLegumes.push(safePick(catalogueAliments.filter(a => a.categorie === "Legume" && !poolLegumes.some(l => l.nom === a.nom))));
+
+        poolProteines = [...new Set(poolProteines)];
+        poolFeculents = [...new Set(poolFeculents)];
+        poolLegumes = [...new Set(poolLegumes)];
+
+        // --- 2. PRÉPARATION DU PETIT-DÉJ ET SNACKS ---
+        const optionsMatin = catalogueAliments.filter(a => a.categorie === "Feculent" && (a.nom.toLowerCase().includes("avoine") || a.nom.toLowerCase().includes("pain") || a.nom.toLowerCase().includes("biscotte") || a.nom.toLowerCase().includes("muffin") || a.nom.toLowerCase().includes("haricots blancs")));
+        const matItemSemaine1 = safePick(optionsMatin);
+        const matItemSemaine2 = safePick(optionsMatin.filter(a => a.nom !== matItemSemaine1.nom).length > 0 ? optionsMatin.filter(a => a.nom !== matItemSemaine1.nom) : optionsMatin);
+        
+        const optionsAccompMatin = catalogueAliments.filter(a => a.nom.toLowerCase().includes("oeufs") || a.nom.toLowerCase().includes("beurre de cacahuète") || a.nom.toLowerCase().includes("fromage à tartiner") || a.nom.toLowerCase().includes("bacon"));
+        const matAccompSemaine1 = safePick(optionsAccompMatin);
+        const matAccompSemaine2 = safePick(optionsAccompMatin.filter(a => a.nom !== matAccompSemaine1.nom).length > 0 ? optionsAccompMatin.filter(a => a.nom !== matAccompSemaine1.nom) : optionsAccompMatin);
+
+                const optionsLip = catalogueAliments.filter(a => a.categorie === "Lipide");
+        const lipideMidi = safePick(optionsLip);
+        const lipideSoir = safePick(optionsLip.filter(l => l.nom !== lipideMidi.nom).length > 0 ? optionsLip.filter(l => l.nom !== lipideMidi.nom) : optionsLip);
+        const monSnackSemaine = safePick(catalogueAliments.filter(a => a.categorie === "Snack"));
+
+        const poolFruits = [piocherSmart("Fruit"), piocherSmart("Fruit")];
+
+        memoireSemaine = [];
+        memoireCourses = {};
+        const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+        const arrondir = (val) => Math.round(val / 10) * 10;
+
+        // --- 3. CRÉATION DES JOURNÉES EN CASCADE ---
+                // ----------------------------------------------------------------------------------------------------
+               // On prépare le carnet de contraventions pour le gras
+        let penaliteLipidesJour = 0;
+        let scoreGlobalSemaine = 0;
+
+        
+        jours.forEach((nomJour, index) => {
+
+            // --- 1. PETIT-DÉJ ET SNACK (Structure variée mais stable) ---
+            let matItem = (index % 2 === 0) ? matItemSemaine1 : matItemSemaine2;
+            let matAccomp = (index % 2 === 0) ? matAccompSemaine1 : matAccompSemaine2;
+            
+            
+
+            const monSnack = monSnackSemaine;
+            const monFruit = safePick(poolFruits);
+            
+                        let diviseurSnack = (budgetQuotidien <= 5) ? 2 : 1;
+            // 🛑 FIX PDM : Si le mec vise + de 2600 kcal, on DOUBLE la collation !
+            let multSnack = (objectifKcal > 2600) ? 2 : 1; 
+            
+            let basePoidsSnack = (monSnack.nom.toLowerCase().includes("skyr") || monSnack.nom.toLowerCase().includes("compote")) ? 150 : 30;
+            let poidsSnack = arrondir((basePoidsSnack * multSnack) / diviseurSnack); 
+            let poidsAccMatin = matAccomp.nom.toLowerCase().includes("oeufs") ? 100 : 30;
+            let poidsMat = (objectifKcal <= 2200) ? 60 : 100;
+
+
+            // --- 2. SÉLECTION STRUCTUREE MIDI/SOIR (Variété contrôlée) ---
+            // On utilise l'index algebra % 3 pour alterner proprement les protéines et légumes
+                        // --- 2. SÉLECTION STRUCTUREE MIDI/SOIR ---
+            const legMidi = poolLegumes[index % poolLegumes.length];
+            const legSoir = poolLegumes[(index + 1) % poolLegumes.length];
+            const midiP = poolProteines[index % poolProteines.length];
+            const soirP = poolProteines[(index + 1) % poolProteines.length];
+
+            // 🛑 L'IA force au moins un plat SEC (dense en glucides) dans la journée
+            let fecMidi = safePick(poolFeculents);
+            let fecSoir = safePick(poolFeculents);
+            if (fecMidi.macros.g < 30 && fecSoir.macros.g < 30) {
+                let optionsDenses = poolFeculents.filter(f => f.macros.g >= 30);
+                if (optionsDenses.length > 0) fecSoir = safePick(optionsDenses);
+            }
+
+            let baseP = 0, baseG = 0, baseL = 0;
+            const addBase = (item, p) => {
+                if(item && item.macros) {
+                    baseP += (item.macros.p * p)/100; baseG += (item.macros.g * p)/100; baseL += (item.macros.l * p)/100;
+                }
+            };
+
+            addBase(matItem, poidsMat); addBase(matAccomp, poidsAccMatin); addBase(monFruit, 150); if(infoLait) addBase(infoLait, 200);
+            addBase(monSnack, poidsSnack);
+
+                                   // --- 1. GLUCIDES : Le Fix Anti-Famine ---
+            let manqG = Math.max(0, profilPanier.macros.gluc - baseG);
+            
+            // 🛑 On libère les féculents (150g max) pour que le bot puisse atteindre 2000 kcal !
+            let maxSec = (objectifKcal > 2600) ? 300 : 150; 
+            let maxConserve = (objectifKcal > 2600) ? 500 : 350;
+
+            let plafondMidiF = (fecMidi.macros.g < 30) ? maxConserve : maxSec; 
+            let pMidiF = arrondir(Math.max(0, Math.min(plafondMidiF, Math.round(( (manqG/2) / (fecMidi.macros.g || 1) ) * 100))));
+            
+            baseG += (fecMidi.macros.g * pMidiF) / 100;
+            
+            let manqGSoir = Math.max(0, profilPanier.macros.gluc - baseG);
+            let plafondSoirF = (fecSoir.macros.g < 30) ? maxConserve : maxSec;
+            
+            let pSoirF = arrondir(Math.max(0, Math.min(plafondSoirF, Math.round(( manqGSoir / (fecSoir.macros.g || 1) ) * 100))));
+            
+            if (pMidiF === 0 && manqG > 10) pMidiF = 10;
+            if (pSoirF === 0 && manqGSoir > 10) pSoirF = 10;
+            
+            addBase(fecMidi, pMidiF); addBase(fecSoir, pSoirF);
+
+
+
+                        // --- 2. PROTÉINES : Fini l'overdose ! On autorise 0g si la jauge est pleine.
+            addBase(midiP, 0); addBase(soirP, 0);
+            let manqP = Math.max(0, profilPanier.macros.prot - baseP);
+            
+            // On remplace le Math.max(50...) par Math.max(0...)
+            let pMidiP = arrondir(Math.max(0, Math.min(250, Math.round(( (manqP/2) / (midiP.macros.p || 1) ) * 100))));
+            if (pMidiP > 0 && pMidiP < 50) pMidiP = 50; // Si on sert de la viande, c'est 50g minimum pour pas faire pitié
+            
+            baseP += (midiP.macros.p * pMidiP) / 100;
+            
+            let manqPSoir = Math.max(0, profilPanier.macros.prot - baseP);
+            let pSoirP = arrondir(Math.max(0, Math.min(250, Math.round(( manqPSoir / (soirP.macros.p || 1) ) * 100))));
+            if (pSoirP > 0 && pSoirP < 50) pSoirP = 50;
+
+            addBase(midiP, pMidiP); addBase(soirP, pSoirP);
+
+
+                                                          // --- 3. LIPIDES : ZÉRO MARGE D'ERREUR ---
+            addBase(legMidi, 200); addBase(legSoir, 200);
+            
+            let manqL = Math.max(0, profilPanier.macros.lip - baseL);
+            
+            // 🛑 On débride à 100g d'huile max (personne n'atteint ça, mais ça débloque l'IA)
+            let plafMidi = lipideMidi.nom.toLowerCase().includes("huile") ? 200 : 500;
+            let pMidiLip = Math.round(Math.max(0, Math.min(plafMidi, ( (manqL/2) / (lipideMidi.macros.l || 1) ) * 100)));
+            
+            baseL += (lipideMidi.macros.l * pMidiLip) / 100;
+            
+            // Le soir DOIT boucher le trou exact au gramme près
+            let manqLSoir = Math.max(0, profilPanier.macros.lip - baseL); 
+            let plafSoir = lipideSoir.nom.toLowerCase().includes("huile") ? 100 : 500;
+            let pSoirLip = Math.round(Math.max(0, Math.min(plafSoir, ( manqLSoir / (lipideSoir.macros.l || 1) ) * 100)));
+
+
+
+
+
+            // --- SAUVEGARDES ---
+            let kcalMatin = calculerTotalRepas([{ nom: matItem.nom, poids: poidsMat }, { nom: matAccomp.nom, poids: poidsAccMatin }, { nom: monFruit.nom, poids: 150 }]) + (infoLait ? (200/100)*infoLait.kcalPour100g : 0);
+            let kcalSnack = calculerTotalRepas([{ nom: monSnack.nom, poids: poidsSnack }]);
+            let totalMidi = calculerTotalRepas([{ nom: midiP.nom, poids: pMidiP }, { nom: fecMidi.nom, poids: pMidiF }, { nom: legMidi.nom, poids: 200 }, { nom: lipideMidi.nom, poids: pMidiLip }]);
+            let totalSoir = calculerTotalRepas([{ nom: soirP.nom, poids: pSoirP }, { nom: fecSoir.nom, poids: pSoirF }, { nom: legSoir.nom, poids: 200 }, { nom: lipideSoir.nom, poids: pSoirLip }]);
+
+            let nomSnackAffiche = cleanNom(monSnack.nom);
+            if (nomSnackAffiche.toLowerCase().includes("beurre de cacahuète")) {
+                nomSnackAffiche = "Tartine de beurre de cacahuète 🥜";
+            }
+
+                       // --- LE RADAR QUOTIDIEN ---
+// On calcule ce que le bot a vraiment généré sur ce jour précis
+let totalPJour = baseP + ((soirP.macros.p || 1) * pSoirP) / 100;
+let totalGJour = baseG + ((fecSoir.macros.g || 1) * pSoirF) / 100;
+let totalLJour = baseL + ((lipideSoir.macros.l || 1) * pSoirLip) / 100;
+let totalKcalJour = kcalMatin + kcalSnack + totalMidi + totalSoir;
+
+// On regarde l'écart avec tes objectifs du jour
+// On regarde l'écart avec tes objectifs du jour
+let ecartPJour = Math.abs(totalPJour - profilPanier.macros.prot);
+let ecartGJour = Math.abs(totalGJour - profilPanier.macros.gluc);
+let ecartLJour = Math.abs(totalLJour - profilPanier.macros.lip);
+let ecartKcalJour = Math.abs(totalKcalJour - objectifKcal);
+
+// NOUVEAU BARÈME : On rend le gras ultra prioritaire (x50) et on détend grave les calories (x1)
+scoreGlobalSemaine += (ecartKcalJour * 10) + (ecartPJour * 10) + (ecartGJour * 10) + (ecartLJour * 80);
+
+// FINI DE JOUER : Tolérance de 5g MAX sur le gras (au lieu de 15g)
+if (ecartLJour > 5) {
+    scoreGlobalSemaine += 100000;
+}
+
+
+
+
+                        memoireSemaine.push({
+                jour: nomJour,
+                mat: { 
+                    itemNom: matItem.nom, itemPoids: poidsMat, 
+                    accompNom: matAccomp.nom, accompPoids: poidsAccMatin, 
+                    nom: `${cleanNom(matItem.nom)} + ${cleanNom(matAccomp.nom)}`, poids: poidsMat, kcal: kcalMatin 
+                },
+                fruit: { nom: cleanNom(monFruit.nom), poids: 150 },
+                snack: { realNom: monSnack.nom, nom: nomSnackAffiche, poids: poidsSnack, kcal: kcalSnack },
+                midi: { pNom: cleanNom(midiP.nom), pPoids: pMidiP, fNom: cleanNom(fecMidi.nom), fPoids: pMidiF, lNom: cleanNom(legMidi.nom), lPoids: 200, lipNom: cleanNom(lipideMidi.nom), lipPoids: pMidiLip, kcal: totalMidi },
+                soir: { pNom: cleanNom(soirP.nom), pPoids: pSoirP, fNom: cleanNom(fecSoir.nom), fPoids: pSoirF, lNom: cleanNom(legSoir.nom), lPoids: 200, lipNom: cleanNom(lipideSoir.nom), lipPoids: pSoirLip, kcal: totalSoir },
+                totalKcal: kcalMatin + kcalSnack + totalMidi + totalSoir
+            });
+
+            // 🛒 On note dans la liste de courses
+            const noter = (nom, qty) => { let n = cleanNom(nom); if(!memoireCourses[n]) memoireCourses[n] = 0; memoireCourses[n] += qty; };
+            noter(matItem.nom, poidsMat); noter(matAccomp.nom, poidsAccMatin); noter(monFruit.nom, 150); if(infoLait) noter(infoLait.nom, 200);
+            noter(monSnack.nom, poidsSnack); 
+            noter(lipideMidi.nom, pMidiLip); noter(lipideSoir.nom, pSoirLip);
+            noter(midiP.nom, pMidiP); noter(fecMidi.nom, pMidiF); noter(legMidi.nom, 200); 
+            noter(soirP.nom, pSoirP); noter(fecSoir.nom, pSoirF); noter(legSoir.nom, 200);
+        }); // 🔴 VOILÀ LA FAMEUSE PARENTHÈSE QUI MANQUAIT !
+
+
+        // ----------------------------------------------------------------------------------------------------
+
+
+
+                // 🟢 LE NOUVEAU JUGE DES MACROS (AU JOUR LE JOUR) 🟢
+        let prixFinal = estimerPrixCourses(memoireCourses);
+        let scoreActuel = scoreGlobalSemaine;
+
+        // La punition pour le budget (on laisse une marge de 2€ pour sauver les lipides)
+        if (prixFinal > profilPanier.budgetHebdo + 2) {
+            scoreActuel += 10000000; 
+        } else {
+            // S'il lui reste de la thune, on le récompense
+            let argentRestant = profilPanier.budgetHebdo - prixFinal;
+            if (argentRestant > 2) {
+                scoreActuel -= (argentRestant * 5); 
+            }
+        }
+
+        // --- SAUVEGARDE DU MEILLEUR PANIER ---
+        // Si ce panier a fait moins de dingueries que le précédent, il devient le roi
+        if (scoreActuel < scoreMeilleurPanier) {
+            scoreMeilleurPanier = scoreActuel;
+            // On fait une copie propre (deep copy) pour pas écraser les données au round suivant
+            meilleurPanierGlobal = {
+                semaine: JSON.parse(JSON.stringify(memoireSemaine)),
+                courses: JSON.parse(JSON.stringify(memoireCourses)),
+                prix: prixFinal
+            };
+        }
+
+        tentatives++;
+
+
+
+
+
+
+        tentatives++;
+    }
+
+    // --- FIN DES 100 ROUNDS ---
+    if (meilleurPanierGlobal) {
+        memoireSemaine = meilleurPanierGlobal.semaine;
+        memoireCourses = meilleurPanierGlobal.courses;
+        console.log("🏆 CHAMPION TROUVÉ (sur 100 essais) ! Focus Macros validé. Prix : " + meilleurPanierGlobal.prix.toFixed(2) + "€");
+    }
+
+    majAffichagePanier(objectifKcal);
+    nextStep('step-resultat');
+}
+
+
+
+function majAffichagePanier(objectifKcal) {
+    const cleanNom = (nom) => nom ? nom.replace(/ x\d+/g, '').trim() : "Inconnu";
+    let totalEuros = 0;
+    let htmlPanier = "";
+    
+    const categories = ["Proteine", "Feculent", "Legume", "Fruit", "Lipide", "Snack"];
+    const labelsCats = {
+        "Proteine": "🥩 Protéines",
+        "Feculent": "🍚 Féculents",
+        "Legume": "🥦 Légumes",
+        "Fruit": "🍎 Fruits",
+        "Lipide": "🥑  & Huiles",
+        "Snack": "🍫 Snacks & Collations"
+    };
+
+    categories.forEach(cat => {
+        let itemsDeLaCat = Object.entries(memoireCourses).filter(([nom]) => {
+            const info = window.catalogueAliments.find(a => cleanNom(a.nom) === nom || a.nom === nom);
+            return info && info.categorie === cat;
+        });
+
+        if (itemsDeLaCat.length > 0) {
+            htmlPanier += `<div style="margin-bottom: 12px; padding: 12px; background: #2c2c2c; border-radius: 8px; border-left: 4px solid #00e676;">
+                <p style="color:#fff; font-weight:bold; margin-bottom:8px;">${labelsCats[cat]}</p>`;
+
+                        itemsDeLaCat.forEach(([nom, total]) => {
+                const info = window.catalogueAliments.find(a => cleanNom(a.nom) === nom || a.nom === nom);
+                let prix = 0;
+                let affichageQty = "";
+
+                // 1. LE BOSS FINAL DES OEUFS 🥚
+                if (nom.toLowerCase().includes("oeuf")) {
+                    let nbOeufs = Math.round(total / 50); // 1 oeuf = 50g
+                    let boites12 = Math.floor(nbOeufs / 12);
+                    let reste = nbOeufs % 12;
+                    let boites6 = 0;
+                    
+                    if (reste > 0) {
+                        if (reste <= 6) boites6 = 1;
+                        else boites12 += 1;
+                    }
+                    
+                    // Calcul du prix avec les vrais tarifs de supermarché
+                    prix = (boites12 * 2.90) + (boites6 * 1.60);
+                    
+                    // Affichage ultra clair
+                    let textes = [];
+                    if (boites12 > 0) textes.push(boites12 + " Boîte(s) de 12");
+                    if (boites6 > 0) textes.push(boites6 + " Boîte(s) de 6");
+                    affichageQty = textes.join(" + ");
+                } 
+                // 2. Les liquides
+                else if (info.unite === "L") {
+                    prix = (total / 1000) * info.prix;
+                    affichageQty = (total / 1000).toFixed(2) + " L"; 
+                } 
+                // 3. Les boîtes (Thon etc)
+                else if (info.unite === "boite") {
+                    prix = (total / 150) * info.prix;
+                    let nbBoites = (total / 150).toFixed(1);
+                    affichageQty = nbBoites + " boîte(s)";
+                } 
+                // 4. Les unités spécifiques (Pain, Jambon)
+                else if (info.unite === "unite") {
+                    let tailleUnite = 150;
+                    if (nom.toLowerCase().includes("pain")) tailleUnite = 500;
+                    if (nom.toLowerCase().includes("jambon")) tailleUnite = 120;
+                    let nbUnites = Math.ceil(total / tailleUnite);
+                    prix = nbUnites * info.prix;
+                    affichageQty = nbUnites + " unité(s)";
+                }
+                // 5. Les Snacks et pots
+                else if (cat === "Snack" || info.nom.includes("Huile")) {
+                    let taillePot = 350; 
+                    if (nom.toLowerCase().includes("chocolat")) taillePot = 100;
+                    if (nom.toLowerCase().includes("skyr")) taillePot = 450;
+                    if (nom.toLowerCase().includes("compote")) taillePot = 500;
+                    
+                    let nbPots = Math.ceil(total / taillePot);
+                    if(nbPots < 1) nbPots = 1;
+                    prix = nbPots * info.prix;
+                    affichageQty = nbPots + " Pot(s) / Tablette(s)";
+                }
+                // 6. Le reste (vrac, légumes, féculents) au gramme près !
+                else {
+                    prix = (total / 1000) * info.prix;
+                    affichageQty = total >= 1000 ? (total / 1000).toFixed(2) + " kg" : Math.round(total) + " g";
+                    
+                    // Et on n'oublie pas le filtre des fruits à l'unité 🍎
+                    if (cat === "Fruit" && !nom.toLowerCase().includes("rouge") && !nom.toLowerCase().includes("surgelé")) {
+                        let poidsUnite = nom.toLowerCase().includes("kiwi") ? 100 : 150;
+                        let nbFruits = Math.round(total / poidsUnite);
+                        if (nbFruits < 1) nbFruits = 1;
+                        affichageQty = nbFruits + " unité(s)";
+                    }
+                }
+
+                totalEuros += prix;
+                htmlPanier += `<div class="panier-item" style="display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 4px;">
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <button onclick="window.bannirAliment('${nom.replace(/'/g, "&apos;")}')" style="background: transparent; border: none; color: #ff5252; cursor: pointer; font-size: 14px; padding: 0;" title="Je n'aime pas ça, changer !">✖️</button>
+                        ${nom}
+                    </span>
+                    <span style="color: #00e676; font-weight: bold;">${affichageQty} (~${prix.toFixed(2)}€)</span>
+                </div>`;
+            });
+
+            htmlPanier += `</div>`;
+        }
+    });
+    // Le p'tit message d'info pour que le mec capte la dinguerie
+    let messageExplicatif = `
+        <div style="background-color: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; color: #bbb; text-align: center;">
+            💡 <b>Astuce :</b> Tu n'aimes pas un produit ? Clique sur la ✖️ à côté de son nom pour le bannir et recalculer un panier !
+        </div>
+    `;
+
+    document.getElementById('zone-panier').innerHTML = messageExplicatif + htmlPanier;
+    document.getElementById('res-kcal').innerText = Math.round(objectifKcal) + " kcal";
+    
+    const budgetElem = document.getElementById('res-budget');
+    if(budgetElem) {
+        budgetElem.innerHTML = `<span style="color:${totalEuros > profilPanier.budgetHebdo ? '#ff5252' : '#00e676'}">${totalEuros.toFixed(2)}€</span> / ${profilPanier.budgetHebdo}€`;
+    }
+}
+
+
+
+
+function genererSemaine() {
+    const grille = document.getElementById('calendar-grid');
+    grille.innerHTML = "";
+    const objectifKcal = profilPanier.tdee || 2000;
+
+               const formaterAliment = (nom, poids) => {
+        if (!nom || poids <= 0) return "";
+        const n = nom.toLowerCase();
+        
+        // 🥚 Les Œufs (1 unité = ~50g)
+        if (n.includes("oeuf")) {
+            let nb = Math.round(poids / 50);
+            if (nb <= 0) return "";
+            return `<b><span class="gram-val">${nb} </span>Oeuf${nb > 1 ? 's' : ''}</b>`;
+        }
+        
+        // 🥛 Le Lait
+        if (n.includes("lait")) {
+            return `<b><span class="gram-val">${(poids/1000).toFixed(1)} L de </span>${nom}</b>`;
+        }
+
+        // 🍎 Les Fruits (à l'unité)
+        const info = window.catalogueAliments.find(a => n.includes(a.nom.toLowerCase()) || a.nom.toLowerCase().includes(n));
+        if (info && info.categorie === "Fruit" && !n.includes("rouge") && !n.includes("surgelé")) {
+            let poidsUnite = n.includes("kiwi") ? 100 : 150;
+            let nbFruits = Math.round(poids / poidsUnite);
+            if (nbFruits < 1) nbFruits = 1;
+            let nomAffiche = nom;
+            if (nbFruits === 1 && nomAffiche.endsWith('s')) nomAffiche = nomAffiche.slice(0, -1);
+            return `<b><span class="gram-val">${nbFruits} </span>${nomAffiche}</b>`;
+        }
+        
+        // 🥑 Tout le reste (Huile, Avocat, Viande, Riz) s'affiche en GRAMMES exacts !
+        return `<b><span class="gram-val">${poids}g de </span>${nom}</b>`;
+    };
+
+
+
+    const cleanNom = (nom) => nom ? nom.replace(/ x\d+/g, '').trim() : "Inconnu";
+
+    memoireSemaine.forEach(jour => {
+        let totP = 0, totG = 0, totL = 0;
+        const addMacros = (nom, poids) => {
+            if(!nom || poids <= 0) return;
+            const info = window.catalogueAliments.find(a => a.nom === nom || a.nom.includes(cleanNom(nom)));
+            if(info && info.macros) {
+                totP += (info.macros.p * poids) / 100;
+                totG += (info.macros.g * poids) / 100;
+                totL += (info.macros.l * poids) / 100;
+            }
+        };
+
+            // 1. Le p'tit déj corrigé (pour que ça trouve les aliments)
+        addMacros(jour.mat.itemNom, jour.mat.itemPoids); 
+        addMacros(jour.mat.accompNom, jour.mat.accompPoids); 
+        addMacros(jour.fruit.nom, jour.fruit.poids); 
+        addMacros("Lait", 200);
+
+        // 2. LES LIGNES DISPARUES (Snack, Midi, Soir)
+        addMacros(jour.snack.nom, jour.snack.poids);
+
+        addMacros(jour.midi.pNom, jour.midi.pPoids); 
+        addMacros(jour.midi.fNom, jour.midi.fPoids); 
+        addMacros(jour.midi.lNom, jour.midi.lPoids); 
+        addMacros(jour.midi.lipNom, jour.midi.lipPoids);
+
+        addMacros(jour.soir.pNom, jour.soir.pPoids); 
+        addMacros(jour.soir.fNom, jour.soir.fPoids); 
+        addMacros(jour.soir.lNom, jour.soir.lPoids); 
+        addMacros(jour.soir.lipNom, jour.soir.lipPoids);
+
+
+        const carte = document.createElement('div');
+        carte.className = "ma-carte-style";
+        carte.style = "background: #1e1e1e; border-top: 5px solid #00e676; border-radius: 15px; padding: 18px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.5);";
+
+        carte.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 8px;">
+            <h3 style="color: #2196f3; margin: 0; font-size: 15px;">${jour.jour}</h3>
+            <span style="font-size: 10px; color: #00e676; font-weight: bold;">PNNS OK ✅</span>
+          </div>
+          
+          <p style="font-size: 10px; color: #aaa; text-align: center; margin: 5px 0;">💧 Eau à volonté | 🍎 Fruits & Légumes</p>
+
+          <div style="background: rgba(255, 235, 59, 0.05); padding: 8px; border-radius: 8px; border-left: 3px solid #ffeb3b; margin-bottom: 5px;">
+            <p style="color: #ffeb3b; font-weight: bold; font-size: 10px; margin: 0; display: flex; justify-content: space-between;">
+              <span>🥣 PTIT-DÉJ</span><span style="color: #00e676;">${Math.round(jour.mat.kcal)} kcal</span>
+            </p>
+            <p style="color: #fff; margin: 3px 0; font-size: 12px;">
+              ${formaterAliment(jour.mat.nom, jour.mat.poids)}<br>
+              <span style="color: #bbb;">🍎 + ${formaterAliment(jour.fruit.nom, jour.fruit.poids)}</span><br>
+              <span style="color: #bbb;">🥛 + ${formaterAliment("Lait", 200)}</span>
+            </p>
+          </div>
+
+          <div style="background: rgba(156, 39, 176, 0.05); padding: 8px; border-radius: 8px; border-left: 3px solid #9c27b0; margin-bottom: 5px;">
+            <p style="color: #9c27b0; font-weight: bold; font-size: 10px; margin: 0; display: flex; justify-content: space-between;">
+              <span>🍫 COLLATION</span><span style="color: #00e676;">${Math.round(jour.snack.kcal)} kcal</span>
+            </p>
+            <p style="color: #fff; margin: 3px 0; font-size: 12px;">
+              ${formaterAliment(jour.snack.nom, jour.snack.poids)}
+            </p>
+          </div>
+
+          <div style="background: #252525; padding: 8px; border-radius: 8px; border-left: 3px solid #00e676; margin-bottom: 5px;">
+            <p style="color: #00e676; font-weight: bold; font-size: 10px; margin: 0; display: flex; justify-content: space-between;">
+              <span>☀️ MIDI</span><span style="color: #00e676;">${Math.round(jour.midi.kcal)} kcal</span>
+            </p>
+            <p style="color: #fff; margin: 3px 0; font-size: 12px;">
+              ${formaterAliment(jour.midi.pNom, jour.midi.pPoids)}<br>
+              <span style="color: #bbb;">+ ${formaterAliment(jour.midi.fNom, jour.midi.fPoids)}</span><br>
+              <span style="color: #81c784;">🥦 + <span class="gram-val">200g de </span>${jour.midi.lNom}</span><br>
+              <span style="color: #aaa;">🥑 + ${formaterAliment(jour.midi.lipNom, jour.midi.lipPoids)}</span>
+            </p>
+          </div>
+
+          <div style="background: #252525; padding: 8px; border-radius: 8px; border-left: 3px solid #ff9800;">
+            <p style="color: #ff9800; font-weight: bold; font-size: 10px; margin: 0; display: flex; justify-content: space-between;">
+              <span>🌙 SOIR</span><span style="color: #00e676;">${Math.round(jour.soir.kcal)} kcal</span>
+            </p>
+            <p style="color: #fff; margin: 3px 0; font-size: 12px;">
+              ${formaterAliment(jour.soir.pNom, jour.soir.pPoids)}<br>
+              ${jour.soir.fPoids > 0 ? `<span style="color: #bbb;">+ ${formaterAliment(jour.soir.fNom, jour.soir.fPoids)}</span><br>` : ''}
+              <span style="color: #81c784;">🥦 + <span class="gram-val">200g de </span>${jour.soir.lNom}</span><br>
+              <span style="color: #aaa;">🥑 + ${formaterAliment(jour.soir.lipNom, jour.soir.lipPoids)}</span>
+            </p>
+          </div>
+          
+          <div style="margin-top: auto; padding-top: 8px; border-top: 1px dotted #444; text-align: center;">
+            <span style="color: #ff5252; font-weight:bold; font-size: 11px;">🔥 Total Jour : ${Math.round(jour.totalKcal)} / ${objectifKcal} kcal</span><br>
+            
+            <span class="gram-val" style="font-size: 10px; color: #aaa; margin-top: 5px; display: inline-block;">
+                🥩 Prot: <b style="color:#00e676;">${Math.round(totP)}g</b> | 
+                🍚 Gluc: <b style="color:#2196f3;">${Math.round(totG)}g</b> | 
+                🥑 Lip: <b style="color:#ff9800;">${Math.round(totL)}g</b>
+            </span>
+
+          </div>
+        `;
+        grille.appendChild(carte);
+    });
+
+    document.getElementById('calendar-overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    if (typeof toggleGramDisplay === 'function') toggleGramDisplay();
+}
+
+
+
+
+
+
+ 
+
+
+
+
+function fermerCalendrier() {
+    document.getElementById('calendar-overlay').style.display = 'none';
+    document.body.style.overflow = 'auto'; // On redonne le scroll
+}
+
+function calculerTotalRepas(alimentsDuRepas) {
+  let totalKcal = 0;
+  
+  alimentsDuRepas.forEach(item => {
+    // On ne calcule QUE ce qui a un nom et un poids (les vrais aliments)
+    if (item.nom && item.poids) {
+      // On cherche l'aliment dans ton vrai catalogue
+      const aliment = catalogueAliments.find(a => a.nom.toLowerCase() === item.nom.toLowerCase() || item.nom.toLowerCase().includes(a.nom.toLowerCase()));
+      
+      // Si on le trouve, on fait le calcul ultra précis
+      if (aliment) {
+        totalKcal += (item.poids / 100) * aliment.kcalPour100g;
+      }
+    }
+  });
+  
+  return totalKcal; // On renvoie le chiffre exact
+}
+
+
+// --- LE CERVEAU DU BOUTON "GRAMMES" ---
+window.toggleGramDisplay = function() {
+    const toggle = document.getElementById('toggle-grams');
+    if (!toggle) return;
+    
+    const isChecked = toggle.checked;
+    const grams = document.querySelectorAll('.gram-val');
+    
+    grams.forEach(g => {
+        g.style.display = isChecked ? 'inline' : 'none';
+    });
+};
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
