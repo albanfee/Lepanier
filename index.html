@@ -513,7 +513,7 @@ input:checked + .slider:before { transform: translateX(20px); }
 
             <div class="nav-buttons">
                 <button class="btn-next btn-back" onclick="nextStep('step-mood')">Retour</button>
-                <button class="btn-next" onclick="nextStep('step-life')">Suivant</button>
+                <button class="btn-next" onclick="lancerCreationPanier()">Créer mon panier</button>m*;:
             </div>
         </div>
 
@@ -534,7 +534,12 @@ input:checked + .slider:before { transform: translateX(20px); }
                 <button class="btn-next" onclick="finishForm()">Créer mon panier</button>
             </div>
         </div>
-  
+
+        <div class="step" id="step-loading" style="text-align: center;">
+    <h2>L'IA cuisine ton plan... 🍳</h2>
+    <p class="subtitle">Génération de 5000 combinaisons en cours pour trouver les macros parfaites...</p>
+    <div class="loader"></div>
+        </div>
   
           <div class="step" id="step-resultat">
             <h2>Ton Panier IA 🛒✨</h2>
@@ -1657,6 +1662,17 @@ window.toggleGramDisplay = function() {
     grams.forEach(g => {
         g.style.display = isChecked ? 'inline' : 'none';
     });
+};
+
+window.lancerCreationPanier = function() {
+    // 1. On affiche direct l'écran qui tourne
+    nextStep('step-loading');
+    
+    // 2. On met un faux délai de 1.5 secondes pour que le mec kiffe l'animation
+    // Et ENSUITE on lance la lourde fonction finishForm()
+    setTimeout(() => {
+        finishForm();
+    }, 1500); 
 };
 
 
