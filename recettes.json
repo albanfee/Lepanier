@@ -1,0 +1,114 @@
+[
+  {
+    "nom": "Poke Bowl Étudiant au Thon 🐟",
+    "motsCles": ["thon", "riz"],
+    "astuce": "Mélange ton thon au naturel avec un fond de sauce, tranche l'avocat et balance tout sur le riz bien chaud."
+  },
+  {
+    "nom": "Pâtes Poulet & Brocolis 🥦",
+    "motsCles": ["poulet", "pâte"],
+    "astuce": "Fais revenir ton poulet, ajoute les brocolis surgelés direct dans l'eau des pâtes à la fin pour gagner du temps."
+  },
+  {
+    "nom": "Riz Façon Bœuf Tomate 🍛",
+    "motsCles": ["steak", "riz"],
+    "astuce": "Émiette ton steak haché à la poêle, balance les tomates pelées et laisse réduire. Parfait avec le riz."
+  },
+  {
+    "nom": "Avocado Toast Protéiné 🥑",
+    "motsCles": ["oeuf", "pain"],
+    "astuce": "Écrase l'avocat sur ton pain de mie complet toasté, et pose tes œufs au plat par-dessus. Lourd pour le p'tit déj."
+  },
+  {
+    "nom": "Wrap Poulet Poivrons 🌯",
+    "motsCles": ["poulet", "wrap", "tortilla"],
+    "astuce": "Fais sauter les poivrons surgelés et le poulet, roule ça dans le wrap. Rapide et efficace."
+  },
+  {
+    "nom": "Riz Sauté Végé au Tofu 🥢",
+    "motsCles": ["tofu", "riz"],
+    "astuce": "Coupe le tofu fumé en petits cubes, fais-le griller à la poêle avec ta poêlée paysanne et mélange avec le riz."
+  },
+  {
+    "nom": "Pâtes au Jambon & Fromage Fondu 🧀",
+    "motsCles": ["jambon", "pâtes"],
+    "astuce": "Le classique de la flemme : mélange les dés de jambon aux pâtes chaudes et laisse fondre le Gouda dessus."
+  },
+  {
+    "nom": "Saumon Rôti & Patate Douce 🍠",
+    "motsCles": ["saumon", "patate"],
+    "astuce": "Coupe la patate douce en frites, un filet d'huile, et au four avec le saumon. Zéro vaisselle."
+  },
+  {
+    "nom": "Bolo Végétale aux PST 🍝",
+    "motsCles": ["pst", "pâte", "soja"],
+    "astuce": "Réhydrate tes protéines de soja texturées direct dans les tomates pelées chaudes pour qu'elles prennent le goût."
+  },
+  {
+    "nom": "Lentilles Riches au Maquereau 🐟",
+    "motsCles": ["maquereau", "lentille"],
+    "astuce": "Mélange les lentilles en boîte chauffées avec le maquereau émietté. Un max de protéines et d'oméga-3."
+  },
+  {
+    "nom": "Couscous Express à la Dinde 🍲",
+    "motsCles": ["dinde", "semoule"],
+    "astuce": "Fais gonfler la semoule avec un peu d'eau chaude, ajoute la ratatouille en boîte et ton jambon de dinde grillé."
+  },
+  {
+    "nom": "Poisson Blanc & Riz aux Courgettes 🐠",
+    "motsCles": ["colin", "riz"],
+    "astuce": "Fais cuire le colin surgelé à la poêle avec les courgettes, un peu de sel/poivre, et sers avec le riz."
+  },
+  {
+    "nom": "Wrap Omelette & Épinards 🍳",
+    "motsCles": ["oeuf", "wrap", "tortilla"],
+    "astuce": "Fais cuire ton omelette, pose la tortilla dessus dans la poêle pour la coller, retourne, ajoute les épinards et plie."
+  },
+  {
+    "nom": "Salade de Quinoa Protéinée 🥗",
+    "motsCles": ["pois chiche", "quinoa"],
+    "astuce": "Quinoa froid, pois chiches égouttés, tomates et un filet d'huile d'olive. Parfait à préparer en avance."
+  },
+  {
+    "nom": "Steak & Lentilles Mijotées 🥩",
+    "motsCles": ["steak", "lentille"],
+    "astuce": "Fais dorer le steak, ajoute des carottes en rondelles et les lentilles pour un repas bien dense."
+  },
+  {
+    "nom": "Riz Sardines & Sauce Tomate 🍅",
+    "motsCles": ["sardine", "riz"],
+    "astuce": "Écrase les sardines dans un fond de tomates pelées, ça fait une sauce incroyable pour lisser le riz."
+  },
+  {
+    "nom": "Porridge Banane Beurre de Cacahuète 🥣",
+    "motsCles": ["avoine", "lait", "flocon"],
+    "astuce": "Fais chauffer l'avoine avec le lait, écrase la banane dedans et rajoute une grosse cuillère de beurre de cacahuète."
+  },
+  {
+    "nom": "Pâtes Carbo Végé au Tofu Fumé 🥓",
+    "motsCles": ["tofu fumé", "pâte"],
+    "astuce": "Le tofu fumé remplace les lardons. Fais-le bien griller à la poêle pour qu'il soit croustillant."
+  },
+    {
+    "nom": "Burger Maison 🍔",
+    "motsCles": ["steak", "burger", "pain"],
+    "astuce": "Fais dorer le pain à la poêle. Fais cuire le steak, ajoute le cheddar par-dessus en fin de cuisson pour le faire fondre. Monte ton burger avec tes crudités et la sauce de ton choix !"
+  },
+  {
+    "nom": "Fajitas Poulet-Poivrons 🌮",
+    "motsCles": ["poulet", "tortilla", "poivrons", "salade"],
+    "astuce": "Émince le poulet et le poivron, fais-les revenir à la poêle avec un peu d'épices (paprika, cumin). Fais chauffer ta tortilla 30s au micro-ondes, garnis et roule !"
+  },
+  {
+    "nom": "Pizza Fit Maison 🍕",
+    "motsCles": ["jambon", "pizza", "pâte"],
+    "astuce": "Étales un peu de sauce tomate sur la pâte, ajoute le jambon en morceaux, la mozza par-dessus, et enfourne à 220°C pendant 10 à 15 minutes jusqu'à ce que ça soit bien doré !"
+  },
+    {
+    "nom": "Poke Bowl Saumon Avocat 🥗",
+    "motsCles": ["saumon", "avocat", "riz"],
+    "astuce": "Coupe le saumon et l'avocat en cubes. Sers-les sur le riz (froid ou tiède) avec les carottes, un filet de sauce soja sucrée/salée et des graines de sésame si t'en as."
+  }
+
+
+]

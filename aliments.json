@@ -6,7 +6,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 116,
     "macros": { "p": 25, "g": 0, "l": 1 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Sardines en boîte (éco)",
@@ -15,7 +20,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 210,
     "macros": { "p": 24, "g": 0, "l": 12 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Maquereaux en boîte",
@@ -24,7 +34,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 240,
     "macros": { "p": 14, "g": 0, "l": 20 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Dés de jambon",
@@ -33,52 +48,26 @@
     "categorie": "Proteine",
     "kcalPour100g": 115,
     "macros": { "p": 20, "g": 1, "l": 3 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": false,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Blanc de poulet (4 tranches)",
-    "prix": 2.20,
-    "unite": "paquet",
-    "categorie": "Proteine",
-    "kcalPour100g": 105,
-    "macros": { "p": 21, "g": 1, "l": 1.5 },
-    "isVege": false
-  },
-  {
-    "nom": "Blanc de poulet (8 tranches)",
-    "prix": 3.00,
-    "unite": "paquet",
-    "categorie": "Proteine",
-    "kcalPour100g": 105,
-    "macros": { "p": 21, "g": 1, "l": 1.5 },
-    "isVege": false
-  },
-  {
-    "nom": "Tofu fumé (prêt à manger)",
-    "prix": 8.00,
+    "nom": "Jambon Blanc (Tranches)",
+    "prix": 12.00,
     "unite": "kg",
     "categorie": "Proteine",
-    "kcalPour100g": 165,
-    "macros": { "p": 15, "g": 3, "l": 10 },
-    "isVege": true
-  },
-  {
-    "nom": "Colin d'Alaska surgelé (éco)",
-    "prix": 5.00,
-    "unite": "kg",
-    "categorie": "Proteine",
-    "kcalPour100g": 75,
-    "macros": { "p": 16, "g": 0, "l": 1 },
-    "isVege": false
-  },
-  {
-    "nom": "Protéines de Soja Texturées (PST)",
-    "prix": 6.50,
-    "unite": "kg",
-    "categorie": "Proteine",
-    "kcalPour100g": 350,
-    "macros": { "p": 50, "g": 20, "l": 2 },
-    "isVege": true
+    "kcalPour100g": 110,
+    "macros": { "p": 18, "g": 1, "l": 3 },
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": false,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Blanc de Poulet",
@@ -87,43 +76,26 @@
     "categorie": "Proteine",
     "kcalPour100g": 110,
     "macros": { "p": 24, "g": 0, "l": 1.5 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Jambon de dinde (éco)",
-    "prix": 7.00,
+    "nom": "Tofu fumé (prêt à manger)",
+    "prix": 8.00,
     "unite": "kg",
     "categorie": "Proteine",
-    "kcalPour100g": 105,
-    "macros": { "p": 21, "g": 1, "l": 2 },
-    "isVege": false
-  },
-  {
-    "nom": "Oeufs",
-    "prix": 3.00,
-    "unite": "unite",
-    "categorie": "Proteine",
-    "kcalPour100g": 155,
-    "macros": { "p": 13, "g": 1, "l": 11 },
-    "isVege": true
-  },
-  {
-    "nom": "Steak haché 5%",
-    "prix": 14.00,
-    "unite": "kg",
-    "categorie": "Proteine",
-    "kcalPour100g": 125,
-    "macros": { "p": 21, "g": 0, "l": 5 },
-    "isVege": false
-  },
-  {
-    "nom": "Steak haché 15% (éco)",
-    "prix": 9.00,
-    "unite": "kg",
-    "categorie": "Proteine",
-    "kcalPour100g": 215,
-    "macros": { "p": 20, "g": 0, "l": 15 },
-    "isVege": false
+    "kcalPour100g": 165,
+    "macros": { "p": 15, "g": 3, "l": 10 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Tofu ferme",
@@ -132,7 +104,82 @@
     "categorie": "Proteine",
     "kcalPour100g": 125,
     "macros": { "p": 14, "g": 2, "l": 7 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Colin d'Alaska surgelé (éco)",
+    "prix": 5.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 75,
+    "macros": { "p": 16, "g": 0, "l": 1 },
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Protéines Tde Soja Texturées (PST)",
+    "prix": 6.50,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 350,
+    "macros": { "p": 50, "g": 20, "l": 2 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Oeufs",
+    "prix": 3.00,
+    "unite": "unite",
+    "categorie": "Proteine",
+    "kcalPour100g": 155,
+    "macros": { "p": 13, "g": 1, "l": 11 },
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": true
+  },
+  {
+    "nom": "Steak haché 5%",
+    "prix": 14.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 125,
+    "macros": { "p": 21, "g": 0, "l": 5 },
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Steak haché 15% (éco)",
+    "prix": 9.00,
+    "unite": "kg",
+    "categorie": "Proteine",
+    "kcalPour100g": 215,
+    "macros": { "p": 20, "g": 0, "l": 15 },
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Saumon",
@@ -141,7 +188,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 205,
     "macros": { "p": 20, "g": 0, "l": 13 },
-    "isVege": false
+    "isVege": false,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Fromage blanc 0%",
@@ -150,7 +202,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 48,
     "macros": { "p": 8, "g": 4, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": true
   },
   {
     "nom": "Lait demi-écrémé",
@@ -159,7 +216,12 @@
     "categorie": "Proteine",
     "kcalPour100g": 46,
     "macros": { "p": 3.3, "g": 4.8, "l": 1.6 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": true
   },
   {
     "nom": "Riz Basmati (sec)",
@@ -168,16 +230,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 350,
     "macros": { "p": 8, "g": 77, "l": 1 },
-    "isVege": true
-  },
-  {
-    "nom": "Riz long grain (éco)",
-    "prix": 1.20,
-    "unite": "kg",
-    "categorie": "Feculent",
-    "kcalPour100g": 350,
-    "macros": { "p": 7, "g": 78, "l": 0.5 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Riz micro-ondable (sachet)",
@@ -186,7 +244,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 140,
     "macros": { "p": 3, "g": 30, "l": 1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Pâtes (crues)",
@@ -195,7 +258,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 350,
     "macros": { "p": 12, "g": 72, "l": 1.5 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Pâtes complètes (crues)",
@@ -204,7 +272,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 345,
     "macros": { "p": 13, "g": 65, "l": 2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Semoule (éco)",
@@ -213,16 +286,54 @@
     "categorie": "Feculent",
     "kcalPour100g": 360,
     "macros": { "p": 12, "g": 73, "l": 2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Wraps / Tortillas",
-    "prix": 9.00,
-    "unite": "kg",
+    "nom": "Tortillas de blé (Fajitas)",
+    "prix": 0.25,
+    "unite": "unite",
     "categorie": "Feculent",
-    "kcalPour100g": 310,
-    "macros": { "p": 8, "g": 52, "l": 7 },
-    "isVege": true
+    "kcalPour100g": 300,
+    "macros": { "p": 8, "g": 55, "l": 5 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Pain Burger (éco)",
+    "prix": 0.35,
+    "unite": "unite",
+    "categorie": "Feculent",
+    "kcalPour100g": 280,
+    "macros": { "p": 8, "g": 52, "l": 4 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Pâte à pizza (éco)",
+    "prix": 1.20,
+    "unite": "unite",
+    "categorie": "Feculent",
+    "kcalPour100g": 250,
+    "macros": { "p": 7, "g": 48, "l": 3 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Lentilles corail (sèches)",
@@ -231,16 +342,26 @@
     "categorie": "Feculent",
     "kcalPour100g": 360,
     "macros": { "p": 25, "g": 55, "l": 2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Lentilles préparées en boîte",
-    "prix": 3.50,
+    "nom": "Lentilles en conserve (éco)",
+    "prix": 2.00,
     "unite": "kg",
     "categorie": "Feculent",
-    "kcalPour100g": 90,
-    "macros": { "p": 6, "g": 12, "l": 0.5 },
-    "isVege": true
+    "kcalPour100g": 100,
+    "macros": { "p": 8, "g": 14, "l": 0.5 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Pois chiches en boîte (égouttés)",
@@ -249,16 +370,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 130,
     "macros": { "p": 7, "g": 16, "l": 2 },
-    "isVege": true
-  },
-  {
-    "nom": " en boîte",
-    "prix": 3.00,
-    "unite": "kg",
-    "categorie": "Feculent",
-    "kcalPour100g": 80,
-    "macros": { "p": 3, "g": 15, "l": 1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Flocons d'avoine",
@@ -267,7 +384,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 370,
     "macros": { "p": 13, "g": 60, "l": 7 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": true
   },
   {
     "nom": "Pain de mie complet (éco)",
@@ -276,7 +398,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 260,
     "macros": { "p": 10, "g": 45, "l": 4 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": false,
+    "isSansLactose": true,
+    "isMatin": true
   },
   {
     "nom": "Patates",
@@ -285,7 +412,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 80,
     "macros": { "p": 2, "g": 17, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Patate douce",
@@ -294,7 +426,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 86,
     "macros": { "p": 1.6, "g": 20, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Quinoa (sec)",
@@ -303,7 +440,12 @@
     "categorie": "Feculent",
     "kcalPour100g": 370,
     "macros": { "p": 14, "g": 64, "l": 6 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Brocolis surgelés (éco)",
@@ -312,7 +454,12 @@
     "categorie": "Legume",
     "kcalPour100g": 30,
     "macros": { "p": 3, "g": 3, "l": 0.4 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Épinards surgelés (éco)",
@@ -321,7 +468,26 @@
     "categorie": "Legume",
     "kcalPour100g": 23,
     "macros": { "p": 3, "g": 2, "l": 0.4 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Tomates",
+    "prix": 2.90,
+    "unite": "kg",
+    "categorie": "Legume",
+    "kcalPour100g": 18,
+    "macros": { "p": 1, "g": 3, "l": 0.2 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Tomates pelées en boîte",
@@ -330,16 +496,12 @@
     "categorie": "Legume",
     "kcalPour100g": 25,
     "macros": { "p": 1.2, "g": 4, "l": 0.2 },
-    "isVege": true
-  },
-  {
-    "nom": "Haricots verts surgelés",
-    "prix": 2.00,
-    "unite": "kg",
-    "categorie": "Legume",
-    "kcalPour100g": 31,
-    "macros": { "p": 1.8, "g": 4, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Haricots verts en boîte",
@@ -348,7 +510,12 @@
     "categorie": "Legume",
     "kcalPour100g": 20,
     "macros": { "p": 1, "g": 3, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Petits pois carottes en boîte",
@@ -357,7 +524,12 @@
     "categorie": "Legume",
     "kcalPour100g": 50,
     "macros": { "p": 3, "g": 8, "l": 0.5 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Ratatouille en boîte",
@@ -366,7 +538,12 @@
     "categorie": "Legume",
     "kcalPour100g": 45,
     "macros": { "p": 1, "g": 5, "l": 2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Carottes",
@@ -375,7 +552,12 @@
     "categorie": "Legume",
     "kcalPour100g": 35,
     "macros": { "p": 1, "g": 6, "l": 0.2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Courgettes",
@@ -384,16 +566,26 @@
     "categorie": "Legume",
     "kcalPour100g": 17,
     "macros": { "p": 1.2, "g": 3, "l": 0.2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Poivrons surgelés",
-    "prix": 3.00,
+    "nom": "Poivrons",
+    "prix": 3.50,
     "unite": "kg",
     "categorie": "Legume",
-    "kcalPour100g": 25,
-    "macros": { "p": 1, "g": 4, "l": 0.3 },
-    "isVege": true
+    "kcalPour100g": 20,
+    "macros": { "p": 1, "g": 4, "l": 0.2 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Mélange poêlée paysanne",
@@ -402,7 +594,26 @@
     "categorie": "Legume",
     "kcalPour100g": 60,
     "macros": { "p": 2, "g": 8, "l": 1.5 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Salade (Laitue/Iceberg)",
+    "prix": 1.20,
+    "unite": "unite",
+    "categorie": "Legume",
+    "kcalPour100g": 15,
+    "macros": { "p": 1.2, "g": 2, "l": 0.2 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Bananes (éco)",
@@ -411,7 +622,12 @@
     "categorie": "Fruit",
     "kcalPour100g": 90,
     "macros": { "p": 1.1, "g": 20, "l": 0.3 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Pommes (éco)",
@@ -420,7 +636,12 @@
     "categorie": "Fruit",
     "kcalPour100g": 50,
     "macros": { "p": 0.3, "g": 12, "l": 0.2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Oranges",
@@ -429,7 +650,12 @@
     "categorie": "Fruit",
     "kcalPour100g": 45,
     "macros": { "p": 0.9, "g": 10, "l": 0.1 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Kiwis",
@@ -438,7 +664,12 @@
     "categorie": "Fruit",
     "kcalPour100g": 60,
     "macros": { "p": 1.1, "g": 12, "l": 0.5 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Fruits rouges surgelés",
@@ -447,7 +678,12 @@
     "categorie": "Fruit",
     "kcalPour100g": 45,
     "macros": { "p": 1, "g": 8, "l": 0.3 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Huile d'olive",
@@ -456,7 +692,12 @@
     "categorie": "Lipide",
     "kcalPour100g": 900,
     "macros": { "p": 0, "g": 0, "l": 100 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Huile de colza (éco)",
@@ -465,7 +706,12 @@
     "categorie": "Lipide",
     "kcalPour100g": 900,
     "macros": { "p": 0, "g": 0, "l": 100 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Avocat",
@@ -474,7 +720,54 @@
     "categorie": "Lipide",
     "kcalPour100g": 160,
     "macros": { "p": 2, "g": 9, "l": 15 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
+  },
+  {
+    "nom": "Gouda en tranches",
+    "prix": 2.00,
+    "unite": "paquet",
+    "categorie": "Lipide",
+    "kcalPour100g": 350,
+    "macros": { "p": 23, "g": 0, "l": 29 },
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": false
+  },
+  {
+    "nom": "Cheddar en tranches",
+    "prix": 8.50,
+    "unite": "kg",
+    "categorie": "Lipide",
+    "kcalPour100g": 400,
+    "macros": { "p": 25, "g": 1, "l": 33 },
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": false
+  },
+  {
+    "nom": "Mozzarella",
+    "prix": 6.50,
+    "unite": "kg",
+    "categorie": "Lipide",
+    "kcalPour100g": 240,
+    "macros": { "p": 18, "g": 1, "l": 18 },
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": false
   },
   {
     "nom": "Amandes",
@@ -483,7 +776,12 @@
     "categorie": "Snack",
     "kcalPour100g": 630,
     "macros": { "p": 25, "g": 7, "l": 53 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
     "nom": "Noix",
@@ -492,16 +790,26 @@
     "categorie": "Snack",
     "kcalPour100g": 690,
     "macros": { "p": 15, "g": 7, "l": 67 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
-    {
+  {
     "nom": "Beurre de cacahuète",
     "prix": 8.00,
     "unite": "kg",
     "categorie": "Snack",
     "kcalPour100g": 600,
     "macros": { "p": 25, "g": 14, "l": 50 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": true
   },
   {
     "nom": "Skyr Nature",
@@ -510,7 +818,12 @@
     "categorie": "Snack",
     "kcalPour100g": 57,
     "macros": { "p": 10, "g": 4, "l": 0.2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": false,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": false,
+    "isMatin": true
   },
   {
     "nom": "Chocolat noir 85%",
@@ -519,16 +832,26 @@
     "categorie": "Snack",
     "kcalPour100g": 600,
     "macros": { "p": 10, "g": 15, "l": 50 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Compote sans sucre jouté (éco)",
+    "nom": "Compote sans sucre ajouté (éco)",
     "prix": 2.20,
     "unite": "kg",
     "categorie": "Snack",
     "kcalPour100g": 60,
     "macros": { "p": 0.5, "g": 13, "l": 0.2 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": true
   },
   {
     "nom": "Galettes de riz",
@@ -537,43 +860,104 @@
     "categorie": "Snack",
     "kcalPour100g": 380,
     "macros": { "p": 8, "g": 80, "l": 3 },
-    "isVege": true
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": true
   },
- {
-    "nom": "Bacon (tranches)",
-    "prix": 2.50,
-    "unite": "paquet",
-    "categorie": "Proteine",
-    "kcalPour100g": 120,
-    "macros": { "p": 20, "g": 1, "l": 4 },
-    "isVege": false
+    {
+    "nom": "Concombre",
+    "prix": 1.20,
+    "unite": "unite",
+    "categorie": "Legume",
+    "kcalPour100g": 15,
+    "macros": { "p": 0.6, "g": 2, "l": 0.1 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Fromage à tartiner (éco)",
+    "nom": "Maïs en conserve",
     "prix": 1.50,
     "unite": "boite",
-    "categorie": "Lipide",
-    "kcalPour100g": 240,
-    "macros": { "p": 6, "g": 3, "l": 23 },
-    "isVege": true
+    "categorie": "Legume",
+    "kcalPour100g": 80,
+    "macros": { "p": 2.5, "g": 14, "l": 1 },
+    "isVege": true,
+    "isVegan": true,
+    "isSansPorc": true,
+    "isSansGluten": true,
+    "isSansLactose": true,
+    "isMatin": false
   },
   {
-    "nom": "Gouda en tranches",
-    "prix": 2.00,
-    "unite": "paquet",
-    "categorie": "Proteine",
-    "kcalPour100g": 350,
-    "macros": { "p": 23, "g": 0, "l": 29 },
-    "isVege": true
-  },
-  {
-    "nom": "Haricots blancs tomate (Baked beans)",
-    "prix": 1.20,
+    "nom": "Dattes séchées",
+    "categorie": "Snack",
+    "kcalPour100g": 300,
+    "macros": { "p": 2, "g": 70, "l": 0.5 },
     "unite": "boite",
+    "prix": 2.80,
+    "isMatin": false
+  },
+  {
+    "nom": "Purée de cacahuète",
+    "categorie": "Lipide",
+    "kcalPour100g": 600,
+    "macros": { "p": 25, "g": 15, "l": 50 },
+    "unite": "pot",
+    "prix": 4.50
+  },
+  {
+    "nom": "Purée d'amande",
+    "categorie": "Lipide",
+    "kcalPour100g": 620,
+    "macros": { "p": 21, "g": 10, "l": 55 },
+    "unite": "pot",
+    "prix": 6.50
+  },
+  {
+    "nom": "Miel",
+    "categorie": "Snack",
+    "kcalPour100g": 320,
+    "macros": { "p": 0.3, "g": 80, "l": 0 },
+    "unite": "boite",
+    "prix": 4.00,
+    "isMatin": true
+  },
+  {
+    "nom": "Granola Chocolat",
     "categorie": "Feculent",
-    "kcalPour100g": 85,
-    "macros": { "p": 5, "g": 13, "l": 0.5 },
-    "isVege": true
+    "kcalPour100g": 450,
+    "macros": { "p": 10, "g": 60, "l": 20 },
+    "unite": "boite",
+    "prix": 3.50,
+    "isMatin": true
+  },
+  {
+    "nom": "Crème de riz",
+    "categorie": "Feculent",
+    "kcalPour100g": 360,
+    "macros": { "p": 7, "g": 80, "l": 0.5 },
+    "unite": "boite",
+    "prix": 3.00,
+    "isMatin": true
+  },
+  {
+    "nom": "Beurre de cacahuète",
+    "categorie": "Snack",
+    "kcalPour100g": 600,
+    "macros": { "p": 25, "g": 15, "l": 50 },
+    "unite": "pot",
+    "prix": 3.50,
+    "isMatin": true,
+    "forcePick": true
   }
+
+
 
 ]
